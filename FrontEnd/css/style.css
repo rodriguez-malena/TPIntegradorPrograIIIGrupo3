@@ -1,0 +1,141 @@
+body{
+    background-color: white;
+    font-family: "Sour Gummy", sans-serif;
+}
+/*==================
+    HEADER
+====================*/
+header {
+    border: 2px solid;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.registro {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.logo-titulo {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+h1 {
+    
+    font-family: "Barriecito", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+}
+
+header img {
+    width: 50px;
+    height: auto;
+}
+
+.datos-busqueda {
+    border: 2px solid salmon;
+}
+
+#datosAlumno {
+    text-align: center;
+    
+}
+
+.barra-navegacion {
+    
+    font-size: 20px;
+    position: relative;
+}
+
+.menu-horizontal{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-horizontal > li {
+    border-radius: 8px;
+    position: relative; /* cada li será el punto de referencia para su submenu */
+}
+
+.menu-horizontal > li > a {
+    padding: 8px;
+    margin: 0;
+    display: flex;
+    
+    color: black;
+    text-decoration: none;
+}
+
+.menu-horizontal >li:hover{
+    background-color: rgba(87, 188, 106, 0.54);
+}
+
+.menu-vertical{
+    position: absolute;
+    display: none;
+    list-style: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 100%; /* aparece justo debajo del li padre */
+    left: 50%; 
+    padding: 0;
+
+    
+    transform: translateX(-50%); /* centra horizontalmente */
+}
+
+.menu-horizontal li:hover .menu-vertical{
+    display: block;
+}
+
+.menu-vertical li:hover{
+    background-color: black;
+}
+
+.menu-vertical li a{
+    display: block;
+    color: white;
+    padding: 10px 10px;
+    text-decoration: none;
+}
+
+
+
+/*=================
+MAIN
+===================*/
+
+h2 {
+    font-family:  "Barriecito", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+#listadoProductos {
+    border: 2px solid red;
+    display:flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+}
+
+.card-producto {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center ;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 6px 10px rgba(70, 39, 5, 0.15);
+}
