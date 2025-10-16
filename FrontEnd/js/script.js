@@ -55,6 +55,7 @@ function mostrarProductos(array){
 
 }
 
+
 const form = document.getElementById('formularioCliente');
     const dataInput = document.getElementById('cliente');
 
@@ -69,3 +70,4 @@ const form = document.getElementById('formularioCliente');
     
     window.location.href = 'index.html';
     });
+
