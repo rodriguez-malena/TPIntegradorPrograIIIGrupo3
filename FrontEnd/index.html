@@ -3,9 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Entre líneas - Librería</title>
+    <link rel="icon" type="image/png" href="./img/libro.png">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+    <header>
+        <div class="registro">
+            <div class="logo-titulo">
+                <img src="./img/libro.png" alt="Logo de libro">
+                <h1>Entre líneas</h1>
+            </div>
+            <div id="datosAlumno"></div>
+        </div>
+
+        <div class="datos-busqueda">
+            <input type="text" id="barraBusqueda" placeholder="Buscar...">
+        </div>
+        
+        <div>
+            <nav class="barra-navegacion">
+                <ul class="menu-horizontal">
+                    <li><a href="#">Bienvenida</a></li>
+                    <li>
+                        <a href="#">Productos</a>
+                        <ul class="menu-vertical">
+                            <li> <a href="#">Nuevos</a></li>
+                            <li><a href="#">Usados</a></li>
+                            <li><a href="#">TODOS</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h2>Nuestros Libros</h2>
+
+        <section id="listadoProductos">
+            <!--<div class="card-producto">
+                <img src="" alt="">
+                <h3></h3>
+                <p>$</p>
+                <button>Agregar al carrito</button>
+            </div>-->
+        </section>
+    </main>
+    <script src="./js/script.js"></script>
 </body>
 </html>
