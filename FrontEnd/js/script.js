@@ -1,17 +1,13 @@
 
-let libros = [
-    {id:1, titulo: "El Principito", precio: 10000, ruta_img: "https://images.cdn3.buscalibre.com/fit-in/360x360/c2/f7/c2f7429ecf0d0c11deab46100022e2ad.jpg"},
-    {id:2, titulo: "Deja de ser tú", precio: 17000, ruta_img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-RXJiImQaE2MXBM7haLVJ_XdNu1olqCmeqQ&s" },
-    {id:3, titulo: "El Psicoanalista", precio: 20000, ruta_img: "https://images.cdn3.buscalibre.com/fit-in/360x360/4e/80/4e8044521f1735d079405967f70da84c.jpg" },
-    {id:4, titulo: "Diez Negritos", precio: 15000, ruta_img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE6wWqco43viShrR9NDNaPIVNHiBIyX3tOKitGnooOCeLayYzU6KSQBIempxw2-Lfvb-E&usqp=CAU" },
-    {id:5, titulo: "El retrato de Dorian Gray", precio: 13000, ruta_img:"https://images.cdn1.buscalibre.com/fit-in/360x360/39/57/3957c8756494c0958f26ed04712ae63f.jpg" },
-    {id:6, titulo: "Hecha de estrellas", precio:18000, ruta_img: "https://imgv2-1-f.scribdassets.com/img/word_document/438247586/original/216x287/59b0043d55/1753104632?v=1"}
-]
+
 
 let alumnos = [
     {dni:"46642416", nombre:"Malena", apellido:"Rodriguez Barrio"},
     {dni:"45071872", nombre:"Aisha", apellido:"Pereyra Sole"}
 ];
+
+let libros = [];
+
 
 let listadoProductos = document.getElementById("listadoProductos");
 let contenedorProducto = "";
@@ -32,15 +28,30 @@ let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 init();
 
 function init(){
+    obtenerLibros();
     imprimirDatosAlumno();
-    mostrarProductos(libros);
     filtrarProductos();
     mostrarCarrito();
     actualizarContador();
     
 }
 
-/*Punto 2 
+
+async function obtenerLibros() {
+    try {
+        const respuesta = await fetch("http://localhost:3000/libros");
+        libros = await respuesta.json();
+        console.log(libros);
+
+        mostrarProductos(libros);
+    }
+    catch(error){
+        console.error("Ocurrio un error: ", error)
+    }
+}
+
+
+/*
 Imprimo mis datos a traves del console.log y luego los inserto en el header del documento con el innerHTML*/
 
 function imprimirDatosAlumno(){
@@ -62,7 +73,8 @@ function mostrarProductos(array){
             <div class="card-producto">
                 <img src="${libro.ruta_img}" alt="${libro.titulo}">
                 <h3>${libro.titulo}</h3>
-                <p>$${libro.precio}</p>
+                <p>${libro.autor}<p>
+                <p class="p-precio">$${libro.precio}</p>
                 <button onclick= "agregarAlCarrito(${libro.id})">Agregar al carrito</button>
             </div>
         `
@@ -94,7 +106,7 @@ function agregarAlCarrito(id){
     else {
         let libroBuscado = libros.find(libro => libro.id == id);
             carrito.push(
-                {id: libroBuscado.id, titulo: libroBuscado.titulo, precio: libroBuscado.precio, ruta_img: libroBuscado.ruta_img, cantidad:1}
+                {id: libroBuscado.id, titulo: libroBuscado.titulo, autor:libroBuscado.autor, precio: libroBuscado.precio, ruta_img: libroBuscado.ruta_img, cantidad:1}
             );
         }
 
@@ -114,7 +126,9 @@ function mostrarCarrito(){
             <li class="bloque-item">
                 <p class="nombre-item">${producto.titulo} - $${producto.precio}</p>
                 <p>x ${producto.cantidad}</p>
-                <button onclick="eliminarProducto(${indice})" class="boton-eliminar">Eliminar</button>
+                <button onclick="eliminarProducto(${indice})" class="boton-eliminar">
+                    <img src="./img/tacho-basura.png" alt="">
+                </button>
             </li>
 
             `;

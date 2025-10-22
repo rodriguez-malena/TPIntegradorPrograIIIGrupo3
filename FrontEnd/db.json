@@ -1,0 +1,64 @@
+{
+    "libros": [
+        {"id":1,
+        "titulo": "El Principito",
+        "autor": "Antoine de Saint-Exupéry",
+        "precio": 10000,
+        "ruta_img": "https://images.cdn3.buscalibre.com/fit-in/360x360/c2/f7/c2f7429ecf0d0c11deab46100022e2ad.jpg"
+        },
+        {"id":2,
+        "titulo": "Deja de ser tú",
+        "autor": "Joe Dispenza",
+        "precio": 17000,
+        "ruta_img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-RXJiImQaE2MXBM7haLVJ_XdNu1olqCmeqQ&s"
+        },
+        {"id":3,
+        "titulo": "El Psicoanalista",
+        "autor": "John Katzenbach",
+        "precio": 20000,
+        "ruta_img": "https://images.cdn3.buscalibre.com/fit-in/360x360/4e/80/4e8044521f1735d079405967f70da84c.jpg"
+        },
+        {"id":4, 
+        "titulo": "Diez Negritos",
+        "autor": "Agatha Christie",
+        "precio": 15000,
+        "ruta_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE6wWqco43viShrR9NDNaPIVNHiBIyX3tOKitGnooOCeLayYzU6KSQBIempxw2-Lfvb-E&usqp=CAU"
+        },
+        {"id":5, 
+        "titulo": "El retrato de Dorian Gray",
+        "autor":"Oscar Wilde",
+        "precio": 13000,
+        "ruta_img":"https://images.cdn1.buscalibre.com/fit-in/360x360/39/57/3957c8756494c0958f26ed04712ae63f.jpg" 
+        },
+        {"id":6,
+        "titulo": "Hecha de estrellas",
+        "autor": "Ashley Herring Blake",
+        "precio":18000, 
+        "ruta_img": "https://imgv2-1-f.scribdassets.com/img/word_document/438247586/original/216x287/59b0043d55/1753104632?v=1"
+        },
+        {"id":7,
+        "titulo": "Los Juegos Del Hambre",
+        "autor": "Suzzane Collins",
+        "precio":34000, 
+        "ruta_img": "https://contentv2.tap-commerce.com/cover/large/9789878120201_1.jpg?id_com=717"
+        },
+        {"id":8,
+        "titulo":"Harry Potter y la Piedra Filosofal",
+        "autor": "Rowling, J.K.",
+        "precio": 48000,
+        "ruta_img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQKkgDu1PmfaQD5PPH92rTcaCxumsI-H76JMKzEPF8DF0-cICGyNDiGDw1I1MrF4HCSG0&usqp=CAU"
+        },
+        {"id":9,
+        "titulo": "El Príncipe Cruel",
+        "autor":"Holly Black",
+        "precio":57000,
+        "ruta_img":"https://images.cdn1.buscalibre.com/fit-in/360x360/49/5c/495ca1967116087308413587df55bec0.jpg"
+        },
+        {"id":10,
+        "titulo": "Cuentos Macabros",
+        "autor":"Edgar Allan Poe",
+        "precio":40000,
+        "ruta_img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqBMOdgmdPTJX5Os1kxBFPHgBWP4gK47mqig&s"
+    }
+    ]
+}
