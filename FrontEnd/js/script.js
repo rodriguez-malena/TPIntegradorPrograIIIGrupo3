@@ -74,7 +74,7 @@ function mostrarProductos(array){
                 <img src="${libro.ruta_img}" alt="${libro.titulo}">
                 <h3>${libro.titulo}</h3>
                 <p>${libro.autor}<p>
-                <p class="p-precio">$${libro.precio}</p>
+                <p class="p-precio">$${libro.precio.toLocaleString()}</p>
                 <button onclick= "agregarAlCarrito(${libro.id})">Agregar al carrito</button>
             </div>
         `
@@ -124,7 +124,7 @@ function mostrarCarrito(){
         total +=  producto.cantidad * producto.precio;
         contenedorCarrito +=  `
             <li class="bloque-item">
-                <p class="nombre-item">${producto.titulo} - $${producto.precio}</p>
+                <p class="nombre-item">${producto.titulo} - $${producto.precio.toLocaleString()}</p>
                 <p>x ${producto.cantidad}</p>
                 <button onclick="eliminarProducto(${indice})" class="boton-eliminar">
                     <img src="./img/tacho-basura.png" alt="">
@@ -136,7 +136,7 @@ function mostrarCarrito(){
     elementosCarrito.innerHTML = contenedorCarrito;
     console.log(carrito);
 
-    totalCarrito.innerHTML =  `<p>Total: $${total}</p>`;
+    totalCarrito.innerHTML =  `<p>Total: $${total.toLocaleString()}</p>`;
 
     let accionVaciar = "";
 
