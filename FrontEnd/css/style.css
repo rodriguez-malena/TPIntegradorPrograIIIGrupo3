@@ -203,7 +203,7 @@ CARRITO
     display: flex;
     flex-direction: column;
     width: 100%;
-    
+
 }
 
 .bloque-item {
@@ -211,6 +211,11 @@ CARRITO
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+.bloque-item img {
+    width: 100px;
+    height: auto;
 }
 
 .acciones-carrito {

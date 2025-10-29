@@ -1,6 +1,24 @@
 
-let librosNuevos = [];
+/*import {imprimirDatosAlumno, obtenerLibros, mostrarProductos, libros } from "./script.js";
 
+async function initNuevos(){
+    imprimirDatosAlumno();
+    await obtenerLibros(); 
+    const librosNuevos = libros.filter(libro => libro.esNuevo === true);
+    console.log("Filtrados:", librosNuevos);
+    mostrarProductos(librosNuevos);
+}
+
+initNuevos();*/
+
+function imprimirDatosAlumno(){
+    let datosAlumno = document.getElementById("datosAlumno");
+    alumnos.forEach(alumno => {
+        console.log(`Alumno: ${alumno.nombre}, Apellido: ${alumno.apellido}, DNI: ${alumno.dni}`);
+        datosAlumno.innerHTML += `${alumno.nombre} ${alumno.apellido} </br>`;
+    })
+
+}
 
 
 async function obtenerLibrosNuevos() {
@@ -17,7 +35,7 @@ async function obtenerLibrosNuevos() {
 }
 
 function mostrarLibrosNuevos(){
-    librosNuevos = libros.filter(libro => libro.esNuevo == true);
+    let librosNuevos = libros.filter(libro => libro.esNuevo == true);
     console.log("Filtrados:", librosNuevos); 
     mostrarProductos(librosNuevos);
 }
@@ -40,4 +58,5 @@ function mostrarProductos(array){
     listadoProductos.innerHTML = contenedorProducto;
 
 }
+
 obtenerLibrosNuevos();
