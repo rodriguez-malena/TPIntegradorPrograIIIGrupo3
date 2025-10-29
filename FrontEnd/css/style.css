@@ -50,9 +50,8 @@ header img {
 
 #barraBusqueda {
     width: 200px;   
-    height: 40px;   
-    padding: 0.3rem;
-    font-size: 16px; 
+    height: 30px;   
+    font-size: 15px; 
     border: 1px solid var(--cremita);
     border-radius: 8px;
     }
@@ -100,7 +99,7 @@ header img {
     display: none;
     list-style: none;
     background-color: rgba(82, 17, 17, 0.5);
-    top: 100%; /* aparece justo debajo del li padre */
+    top: 100%;
     left: 50%; 
     padding: 0;
 
@@ -172,7 +171,7 @@ h2 {
     margin-top: 1rem;
 }
 .card-producto button {
-    font-family: "Nunito Sans", sans-serif;
+    font-family: var(--fuente-secundaria);
     padding: 0.5rem;
     border-radius: 5px;
     box-shadow: 0 6px 10px rgba(70, 39, 5, 0.15);
@@ -198,15 +197,25 @@ CARRITO
 }
 
 
+.elementosLista {
+    border: 2px solid red;
+    width: 50%;
+}
 
 .contenedor-carrito {
     display: flex;
-    flex-direction: column;
-    width: 100%;
+    
+}
 
+#elementosCarrito {
+    border: 2px solid blue;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .bloque-item {
+    border: 2px solid maroon;
     list-style: none;
     display: flex;
     align-items: center;
@@ -219,7 +228,9 @@ CARRITO
 }
 
 .acciones-carrito {
+    border: 2px solid magenta;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 
@@ -233,7 +244,7 @@ CARRITO
 .boton-eliminar img {
     width: 30%;
 }
-.btn-vaciar {
+.btn-vaciar, .btn-pagar {
     background-color: var(--marron);
     padding: 0.5rem;
     color: white;
@@ -245,4 +256,43 @@ CARRITO
 
 .btn-vaciar:hover, .boton-eliminar:hover {
     transform: scale(1.05)
+}
+
+/*===================
+INICIO CLIENTE
+===================*/
+
+#formularioCliente {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form button {
+    font-family: var(--fuente-secundaria);
+    padding: 0.5rem;
+    color: var(--cremita);
+    border-radius: 5px;
+    box-shadow: 0 6px 10px rgba(70, 39, 5, 0.15);
+    border: none;
+    background-color: var(--marron);
+    cursor: pointer;
+}
+form button:hover {
+    border: 1px solid var(--marron);
+}
+form input {
+    width: 200px;   
+    height: 30px;   
+    border: 1px solid var(--cremita);
+    border-radius: 8px;
+    padding: 0.2rem;
+    font-size: 15px;
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid var(--marron);
+    box-shadow: 0 0 5px var(--marron);
 }

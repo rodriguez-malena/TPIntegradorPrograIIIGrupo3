@@ -14,6 +14,7 @@ let elementosCarrito = document.getElementById("elementosCarrito");
 
 let totalCarrito = document.getElementById("totalCarrito");
 let botonCarrito = document.getElementById("botonCarrito");
+let botonPagar = document.getElementById("botonPagar");
 
 let contadorCarrito = document.getElementById("contadorCarrito");
 
@@ -24,13 +25,18 @@ let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 init();
 
-function init(){
-    obtenerLibros();
+function init() {
     imprimirDatosAlumno();
-    filtrarProductos();
-    mostrarCarrito();
-    actualizarContador();
-    
+
+    if (document.getElementById("listadoProductos")) {
+        obtenerLibros();
+        filtrarProductos();
+    }
+
+    if (document.getElementById("elementosCarrito")) {
+        mostrarCarrito();
+        actualizarContador();
+    }
 }
 
 
@@ -106,7 +112,7 @@ function agregarAlCarrito(id){
                 {id: libroBuscado.id, titulo: libroBuscado.titulo, autor:libroBuscado.autor, precio: libroBuscado.precio, ruta_img: libroBuscado.ruta_img, cantidad:1}
             );
         }
-
+    localStorage.setItem("carrito", JSON.stringify(carrito));
     actualizarContador();
     mostrarCarrito();
     }
@@ -121,6 +127,7 @@ function mostrarCarrito(){
         total +=  producto.cantidad * producto.precio;
         contenedorCarrito +=  `
             <li class="bloque-item">
+                <img src="${producto.ruta_img}" alt="${producto.titulo}">
                 <p class="nombre-item">${producto.titulo} - $${producto.precio.toLocaleString()}</p>
                 <p>x ${producto.cantidad}</p>
                 <button onclick="eliminarProducto(${indice})" class="boton-eliminar">
@@ -139,7 +146,8 @@ function mostrarCarrito(){
 
     if (carrito.length > 0){ 
         accionVaciar =  
-            `<button id="btnVaciar" class="btn-vaciar" onclick="vaciarCarrito()"> Vaciar carrito</button>`;
+            `<button id="btnVaciar" class="btn-vaciar" onclick="vaciarCarrito()"> Vaciar carrito</button>
+            <button id="btnPagar" class="btn-pagar" onclick="">Pagar</button>`;
     }
 
     botonCarrito.innerHTML = accionVaciar;

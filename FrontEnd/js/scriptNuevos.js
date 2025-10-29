@@ -10,6 +10,10 @@ async function initNuevos(){
 }
 
 initNuevos();*/
+let alumnos = [
+    {dni:"46642416", nombre:"Malena", apellido:"Rodriguez Barrio"},
+    {dni:"45071872", nombre:"Aisha", apellido:"Pereyra Sole"}
+];
 
 
 
