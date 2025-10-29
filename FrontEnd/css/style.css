@@ -1,16 +1,25 @@
+:root{
+    --cremita: rgb(248, 234, 207);
+    --marron: #452C27;
+    --fuente-titulos:"Barriecito", system-ui;
+    --fuente-secundaria: "Nunito Sans", sans-serif;
+    --shadow: 0 6px 10px rgba(70, 39, 5, 0.15);
+}
+
 body{
     background-color: white;
-    font-family: "Sour Gummy", sans-serif;
+    font-family:  var(--fuente-secundaria);
 }
 /*==================
     HEADER
 ====================*/
 header {
-    border: 2px solid;
+    background-color: var(--marron);
+    color: var(--cremita);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+    box-shadow: var(--shadow);
 }
 
 .registro {
@@ -28,8 +37,7 @@ header {
 }
 
 h1 {
-    
-    font-family: "Barriecito", system-ui;
+    font-family: var(--fuente-titulos);
     font-weight: 400;
     font-style: normal;
     margin: 0;
@@ -40,17 +48,22 @@ header img {
     height: auto;
 }
 
-.datos-busqueda {
-    border: 2px solid salmon;
-}
+#barraBusqueda {
+    width: 200px;   
+    height: 40px;   
+    padding: 0.3rem;
+    font-size: 16px; 
+    border: 1px solid var(--cremita);
+    border-radius: 8px;
+    }
+
 
 #datosAlumno {
     text-align: center;
-    
+    margin-top: 0.5rem;
 }
 
 .barra-navegacion {
-    
     font-size: 20px;
     position: relative;
 }
@@ -74,19 +87,19 @@ header img {
     margin: 0;
     display: flex;
     
-    color: black;
+    color:  var(--cremita);
     text-decoration: none;
 }
 
 .menu-horizontal >li:hover{
-    background-color: rgba(87, 188, 106, 0.54);
+    background-color: var(--marron);
 }
 
 .menu-vertical{
     position: absolute;
     display: none;
     list-style: none;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(82, 17, 17, 0.5);
     top: 100%; /* aparece justo debajo del li padre */
     left: 50%; 
     padding: 0;
@@ -100,7 +113,7 @@ header img {
 }
 
 .menu-vertical li:hover{
-    background-color: black;
+    background-color: rgb(165, 157, 157);
 }
 
 .menu-vertical li a{
@@ -118,13 +131,14 @@ MAIN
 
 h2 {
     font-family:  "Barriecito", system-ui;
+    color: var(--marron);
     font-weight: 400;
     font-style: normal;
 }
+
 #listadoProductos {
-    border: 2px solid red;
     display:flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 1rem;
 
@@ -135,7 +149,100 @@ h2 {
     flex-direction: column;
     justify-content: space-between;
     align-items: center ;
+    width: 200px;        
     padding: 1rem;
     border-radius: 5px;
+    box-shadow: var(--shadow);
+}
+
+.card-producto h3 {
+    text-align: center;
+}
+
+.card-producto img {
+    width: 100px;
+    height: auto;
+}
+
+.card-producto p {
+    margin: 0;
+}
+
+.card-producto .p-precio {
+    margin-top: 1rem;
+}
+.card-producto button {
+    font-family: "Nunito Sans", sans-serif;
+    padding: 0.5rem;
+    border-radius: 5px;
     box-shadow: 0 6px 10px rgba(70, 39, 5, 0.15);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top: 1rem;
+
+}
+
+.card-producto button:hover {
+    color:#BA8173;
+}
+
+/*=================
+CARRITO
+===================*/
+
+#carrito {
+    display: flex;
+    flex-direction: column;
+    align-items:center; 
+}
+
+
+
+.contenedor-carrito {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+.bloque-item {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.bloque-item img {
+    width: 100px;
+    height: auto;
+}
+
+.acciones-carrito {
+    display: flex;
+    justify-content: space-between;
+}
+
+.boton-eliminar{
+    background-color: transparent;
+    border: none;
+    
+    cursor:pointer
+}
+
+.boton-eliminar img {
+    width: 30%;
+}
+.btn-vaciar {
+    background-color: var(--marron);
+    padding: 0.5rem;
+    color: white;
+
+    border: none;
+    border-radius: 3px;
+    cursor:pointer
+}
+
+.btn-vaciar:hover, .boton-eliminar:hover {
+    transform: scale(1.05)
 }

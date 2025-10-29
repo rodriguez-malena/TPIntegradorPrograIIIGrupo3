@@ -1,62 +1,43 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entre líneas - Librería</title>
-    <link rel="icon" type="image/png" href="./img/libro.png">
+    <title>Carrito de Compras</title>
     <link rel="stylesheet" href="./css/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
 </head>
-    <body>
-    <header>
-        <div class="registro">
-            <div class="logo-titulo">
-                <img src="./img/libro.png" alt="Logo de libro">
-                <h1>Entre líneas</h1>
-            </div>
-            <div id="datosAlumno"></div>
+<header>
+    <div class="registro">
+        <div class="logo-titulo">
+            <img src="./img/libro.png" alt="Logo de libro">
+            <h1>Entre líneas</h1>
         </div>
-
-        <div class="datos-busqueda">
-            <input type="text" id="barraBusqueda" placeholder="Buscar...">
-        </div>
-        
+        <div id="datosAlumno"></div>
+    </div>
         <div>
             <nav class="barra-navegacion">
                 <ul class="menu-horizontal">
-                    <li><a href="./carrito.html">Carrito</a></li>
+                    <li><a href="./index.html">Inicio</a></li>
                     <li>
                         <a href="#">Productos</a>
                         <ul class="menu-vertical">
                             <li> <a href="./librosNuevos.html">Nuevos</a></li>
                             <li><a href="#">Usados</a></li>
-                            <li><a href="#">TODOS</a></li>
+                            <li><a href="./index.html">TODOS</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </div>
-    </header>
-
+</header>
+<body>
     <main>
-        <h2>Nuestros Libros</h2>
-
-        <section id="listadoProductos">
-            <!--<div class="card-producto">
-                <img src="" alt="">
-                <h3></h3>
-                <p>$</p>
-                <button>Agregar al carrito</button>
-            </div>-->
-        </section>
-
+        <h2>Carrito de compras</h2>
         <section id="carrito">
-            <h2>Carrito</h2>
             <div class="contenedor-carrito">
                 <div class="elementosLista">
                     <ul id="elementosCarrito">
@@ -75,9 +56,6 @@
             </div>
         </section>
     </main>
-    
-
-
-<script src="./js/script.js"></script>
+    <script src="./js/carrito.js"></script>
 </body>
 </html>
