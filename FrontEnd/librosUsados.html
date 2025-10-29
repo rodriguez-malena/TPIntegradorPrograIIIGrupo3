@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entre líneas - Librería</title>
+    <title>Entre líneas - Usados</title>
     <link rel="icon" type="image/png" href="./img/libro.png">
     <link rel="stylesheet" href="./css/style.css">
 
@@ -12,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
 </head>
-    <body>
+<body>
     <header>
         <div class="registro">
             <div class="logo-titulo">
@@ -29,12 +28,12 @@
         <div>
             <nav class="barra-navegacion">
                 <ul class="menu-horizontal">
+                    <li><a href="./index.html">Inicio</a></li>
                     <li><a href="./carrito.html">Carrito</a></li>
                     <li>
                         <a href="#">Productos</a>
                         <ul class="menu-vertical">
-                            <li> <a href="./librosNuevos.html">Nuevos</a></li>
-                            <li><a href="./librosUsados.html">Usados</a></li>
+                            <li><a href="./librosNuevos.html">Nuevos</a></li>
                             <li><a href="./index.html">TODOS</a></li>
                         </ul>
                     </li>
@@ -44,7 +43,7 @@
     </header>
 
     <main>
-        <h2>Nuestros Libros</h2>
+        <h2>Nuestros Libros Usados</h2>
 
         <section id="listadoProductos">
             <!--<div class="card-producto">
@@ -54,30 +53,8 @@
                 <button>Agregar al carrito</button>
             </div>-->
         </section>
-
-        <section id="carrito">
-            <h2>Carrito</h2>
-            <div class="contenedor-carrito">
-                <div class="elementosLista">
-                    <ul id="elementosCarrito">
-                    <!--<li class="bloque-item">
-                        <p class="nombre-item">nombreProducto - precioProducto</p>
-                        <button class="boton-eliminar"><img src="./img/tacho-basura.png" alt=""></button>
-                        </li>-->
-                    </ul>
-                </div>
-
-                <div class="acciones-carrito">
-                    <div id="botonCarrito"></div>
-                    <div id="totalCarrito"></div>
-                    <div id="contadorCarrito"></div>
-                </div>
-            </div>
-        </section>
     </main>
-    
+    <script src="./js/usados.js"></script>
 
-
-<script src="./js/script.js"></script>
 </body>
 </html>

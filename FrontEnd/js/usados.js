@@ -1,18 +1,3 @@
-
-/*import {imprimirDatosAlumno, obtenerLibros, mostrarProductos, libros } from "./script.js";
-
-async function initNuevos(){
-    imprimirDatosAlumno();
-    await obtenerLibros(); 
-    const librosNuevos = libros.filter(libro => libro.esNuevo === true);
-    console.log("Filtrados:", librosNuevos);
-    mostrarProductos(librosNuevos);
-}
-
-initNuevos();*/
-
-
-
 function imprimirDatosAlumno(){
     let datosAlumno = document.getElementById("datosAlumno");
     alumnos.forEach(alumno => {
@@ -29,15 +14,15 @@ async function obtenerLibrosNuevos() {
         libros = await respuesta.json();
         console.log(libros);
         
-        mostrarLibrosNuevos(libros);
+        mostrarLibrosUsados(libros);
     }
     catch(error){
         console.error("Ocurrio un error: ", error)
     }
 }
 
-function mostrarLibrosNuevos(){
-    let librosNuevos = libros.filter(libro => libro.esNuevo == true);
+function mostrarLibrosUsados(){
+    let librosNuevos = libros.filter(libro => libro.esNuevo == false);
     console.log("Filtrados:", librosNuevos); 
     mostrarProductos(librosNuevos);
 }

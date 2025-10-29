@@ -44,7 +44,7 @@
         },
         {"id":7,
         "titulo": "Los Juegos Del Hambre",
-        "autor": "Suzzane Collins",
+        "autor": "Suzanne Collins",
         "precio":34000, 
         "esNuevo":true,
         "ruta_img": "https://images.cdn1.buscalibre.com/fit-in/360x360/b7/40/b740aa55d27021aeaf1322d76473e829.jpg"
