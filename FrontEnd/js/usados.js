@@ -8,25 +8,24 @@ function imprimirDatosAlumno(){
 }
 
 
-async function obtenerLibrosNuevos() {
+async function obtenerLibrosEstado(buleano) {
     try {
         const respuesta = await fetch("http://localhost:3000/libros");
         libros = await respuesta.json();
         console.log(libros);
         
-        mostrarLibrosUsados(libros);
+        mostrarProductos(filtrarLibrosEstado(buleano));
     }
     catch(error){
         console.error("Ocurrio un error: ", error)
     }
 }
 
-function mostrarLibrosUsados(){
-    let librosNuevos = libros.filter(libro => libro.esNuevo == false);
-    console.log("Filtrados:", librosNuevos); 
-    mostrarProductos(librosNuevos);
+function filtrarLibrosEstado(buleano){
+    let librosFiltrados = libros.filter(libro => libro.esNuevo == buleano);
+    console.log("Filtrados:", librosFiltrados); 
+    return librosFiltrados;
 }
-
 function mostrarProductos(array){
     contenedorProducto = "";
 
@@ -46,7 +45,7 @@ function mostrarProductos(array){
 
 }
 
-obtenerLibrosNuevos();
+obtenerLibrosEstado(false);
 
 function agregarAlCarrito(id){
     let libroExistente = carrito.find(libroCarrito => libroCarrito.id == id);
