@@ -1,6 +1,3 @@
-
-
-
 let alumnos = [
     {dni:"46642416", nombre:"Malena", apellido:"Rodriguez Barrio"},
     {dni:"45071872", nombre:"Aisha", apellido:"Pereyra Sole"}
@@ -167,7 +164,7 @@ function eliminarProducto(indice){
 }
 
 
-/*Punto 9 
+/*
 Se reinicia el carrito declarandolo como vacio*/
 function vaciarCarrito(){
     carrito = [];
@@ -175,7 +172,7 @@ function vaciarCarrito(){
     actualizarContador();
 }
 
-/*Punto 7
+/*
 Esta función se encarga de llevar el conteo de los productos en nuestro carrito cada vez que sucede alguna modificación */
 function actualizarContador(){
     let cantidadEnCarrito = 0;
@@ -184,6 +181,8 @@ function actualizarContador(){
     }
     contadorCarrito.innerHTML = `Cantidad: ${cantidadEnCarrito} productos`;
 }
+
+
 
 /*const form = document.getElementById('formularioCliente');
 const dataInput = document.getElementById('cliente');
