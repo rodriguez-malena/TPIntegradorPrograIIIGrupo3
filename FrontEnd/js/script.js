@@ -184,15 +184,18 @@ function actualizarContador(){
 
 
 
-/*const form = document.getElementById('formularioCliente');
-const dataInput = document.getElementById('cliente');
+const formularioCliente = document.getElementById('formularioCliente');
+const inputCliente = document.getElementById('cliente');
 
-
-form.addEventListener('submit', function(event) {
-    event.preventDefault(); 
-    const nombreCliente = dataInput.value;
-    localStorage.setItem('miCliente', nombreCliente);
-
-    
-    window.location.href = 'index.html';
-    });*/
+formularioCliente.addEventListener('submit', function(evento) {
+    evento.preventDefault(); 
+    const nombreCliente = inputCliente.value.trim();
+    if (nombreCliente) {
+        localStorage.setItem('nombreCliente', nombreCliente);
+        window.location.href = 'index.html';
+    } else {
+        
+        alert('Por favor, ingresa tu nombre para continuar.');
+    }
+    init();
+});
