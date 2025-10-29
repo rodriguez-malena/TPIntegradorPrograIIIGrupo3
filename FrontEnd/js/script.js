@@ -182,17 +182,3 @@ function actualizarContador(){
     contadorCarrito.innerHTML = `Cantidad: ${cantidadEnCarrito} productos`;
 }
 
-
-
-/*const form = document.getElementById('formularioCliente');
-const dataInput = document.getElementById('cliente');
-
-
-form.addEventListener('submit', function(event) {
-    event.preventDefault(); 
-    const nombreCliente = dataInput.value;
-    localStorage.setItem('miCliente', nombreCliente);
-
-    
-    window.location.href = 'index.html';
-    });*/
