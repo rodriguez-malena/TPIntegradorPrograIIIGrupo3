@@ -1,11 +1,3 @@
-function imprimirDatosAlumno(){
-    let datosAlumno = document.getElementById("datosAlumno");
-    alumnos.forEach(alumno => {
-        console.log(`Alumno: ${alumno.nombre}, Apellido: ${alumno.apellido}, DNI: ${alumno.dni}`);
-        datosAlumno.innerHTML += `${alumno.nombre} ${alumno.apellido} </br>`;
-    })
-
-}
 
 
 async function obtenerLibrosEstado(buleano) {

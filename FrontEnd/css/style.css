@@ -62,16 +62,13 @@ header img {
     margin-top: 0.5rem;
 }
 
-.barra-navegacion {
-    font-size: 20px;
-    position: relative;
-}
 
 .menu-horizontal{
     list-style: none;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     padding: 0;
     margin: 0;
 }
@@ -79,6 +76,10 @@ header img {
 .menu-horizontal > li {
     border-radius: 8px;
     position: relative; /* cada li será el punto de referencia para su submenu */
+}
+
+li img {
+    width: 35%;
 }
 
 .menu-horizontal > li > a {
@@ -174,7 +175,7 @@ h2 {
     font-family: var(--fuente-secundaria);
     padding: 0.5rem;
     border-radius: 5px;
-    box-shadow: 0 6px 10px rgba(70, 39, 5, 0.15);
+    box-shadow: var(--shadow);
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -196,39 +197,33 @@ CARRITO
     align-items:center; 
 }
 
-
-.elementosLista {
-    border: 2px solid red;
-    width: 50%;
-}
-
 .contenedor-carrito {
     display: flex;
-    
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 #elementosCarrito {
-    border: 2px solid blue;
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
 .bloque-item {
-    border: 2px solid maroon;
-    list-style: none;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    gap: 2rem;
+    list-style: none;
+    box-shadow: var(--shadow);
 }
 
 .bloque-item img {
     width: 100px;
     height: auto;
+
 }
 
 .acciones-carrito {
-    border: 2px solid magenta;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -237,24 +232,39 @@ CARRITO
 .boton-eliminar{
     background-color: transparent;
     border: none;
-    
-    cursor:pointer
+    cursor:pointer;
 }
 
 .boton-eliminar img {
     width: 30%;
 }
-.btn-vaciar, .btn-pagar {
-    background-color: var(--marron);
-    padding: 0.5rem;
-    color: white;
 
+.btn-vaciar {
+    font-family: var(--fuente-secundaria);
+    background-color: transparent;
+    padding: 0.5rem;
+    color: var(--marron);
+    box-shadow: var(--shadow);
     border: none;
     border-radius: 3px;
-    cursor:pointer
+    cursor:pointer;
 }
 
-.btn-vaciar:hover, .boton-eliminar:hover {
+.btn-pagar {
+    font-family: var(--fuente-secundaria);
+    background-color: var(--marron);
+    padding: 0.5rem;
+    color: var(--cremita);
+    box-shadow: var(--shadow);
+    border: none;
+    border-radius: 3px;
+    cursor:pointer;
+}
+
+.btn-vaciar:hover, .btn-pagar:hover {
+    border: 1px solid var(--marron);
+}
+.boton-eliminar:hover {
     transform: scale(1.05)
 }
 
@@ -279,9 +289,11 @@ form button {
     background-color: var(--marron);
     cursor: pointer;
 }
+
 form button:hover {
     border: 1px solid var(--marron);
 }
+
 form input {
     width: 200px;   
     height: 30px;   
