@@ -23,58 +23,35 @@ let botonesOrdenar = document.getElementById("botonesSeccionProductos");
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 
-init();
+let contenedorProductos = document.getElementById("contenedor-productos");
 
-function init() {
-    imprimirDatosAlumno();
+let url = "http://localhost:3000";
 
-    if (document.getElementById("listadoProductos")) {
-        obtenerLibros();
-        filtrarProductos();
-    }
-
-    if (document.getElementById("elementosCarrito")) {
-        mostrarCarrito();
-        actualizarContador();
-    }
-}
-
-
-async function obtenerLibros() {
+async function obtenerProductos() {
     try {
-        const respuesta = await fetch("http://localhost:3000/libros");
-        libros = await respuesta.json();
+        let respuesta = await fetch(`${url}/products`);
+        console.log(`solicitud fetch GET a ${url}/products`);
+        
+        let data = await respuesta.json();
+        console.log(data);
+
+        libros = data.payload;
         console.log(libros);
 
         mostrarProductos(libros);
-    }
-    catch(error){
-        console.error("Ocurrio un error: ", error)
+    } 
+    catch (error) {
+        console.error("error: ", error);
     }
 }
 
-
-/*
-Imprimo mis datos a traves del console.log y luego los inserto en el header del documento con el innerHTML*/
-
-function imprimirDatosAlumno(){
-    let datosAlumno = document.getElementById("datosAlumno");
-    alumnos.forEach(alumno => {
-        console.log(`Alumno: ${alumno.nombre}, Apellido: ${alumno.apellido}, DNI: ${alumno.dni}`);
-        datosAlumno.innerHTML += `${alumno.nombre} ${alumno.apellido} </br>`;
-    })
-
-}
-
-/*Funcion que recorre con un forEach un array de objetos, donde por cada objeto crea un div con toda su información dentro.
-Estos divs se guarda cada uno en una tarjetaProducto, la cual se agregará a traves del innerHTML a la seccion listadoProductos del html*/
 function mostrarProductos(array){
     contenedorProducto = "";
 
     array.forEach(libro => {
         contenedorProducto += `
             <div class="card-producto">
-                <img src="${libro.ruta_img}" alt="${libro.titulo}">
+                <img src="./img/${libro.ruta_img}" alt="${libro.titulo}">
                 <h3>${libro.titulo}</h3>
                 <p>${libro.autor}<p>
                 <p class="p-precio">$${libro.precio.toLocaleString()}</p>
@@ -87,6 +64,32 @@ function mostrarProductos(array){
 
 }
 
+function init() {
+    imprimirDatosAlumno();
+
+    if (document.getElementById("listadoProductos")) {
+        obtenerProductos();
+        filtrarProductos();
+    }
+
+    if (document.getElementById("elementosCarrito")) {
+        mostrarCarrito();
+        actualizarContador();
+    }
+}
+
+init();
+
+function imprimirDatosAlumno(){
+    let datosAlumno = document.getElementById("datosAlumno");
+    alumnos.forEach(alumno => {
+        console.log(`Alumno: ${alumno.nombre}, Apellido: ${alumno.apellido}, DNI: ${alumno.dni}`);
+        datosAlumno.innerHTML += `${alumno.nombre} ${alumno.apellido} </br>`;
+    })
+
+}
+
+window.imprimirDatosAlumno = imprimirDatosAlumno;
 
 function filtrarProductos(){
     barraBusqueda.addEventListener("keyup", function(){
@@ -95,10 +98,8 @@ function filtrarProductos(){
         let itemsFiltrados = libros.filter(item => item.titulo.toLowerCase().includes(itemBuscado));
 
         mostrarProductos(itemsFiltrados);
-    });
-
+    })
 }
-
 
 function agregarAlCarrito(id){
     let libroExistente = carrito.find(libroCarrito => libroCarrito.id == id);
@@ -117,44 +118,45 @@ function agregarAlCarrito(id){
     mostrarCarrito();
     }
 
-
-
-function mostrarCarrito(){
-    let total = 0;
-    let contenedorCarrito = "";
-
-    carrito.forEach((producto, indice) => {
-        total +=  producto.cantidad * producto.precio;
-        contenedorCarrito +=  `
-            <li class="bloque-item">
-                <img src="${producto.ruta_img}" alt="${producto.titulo}">
-                <p class="nombre-item">${producto.titulo} - $${producto.precio.toLocaleString()}</p>
-                <p>x ${producto.cantidad}</p>
-                <button onclick="eliminarProducto(${indice})" class="boton-eliminar">
-                    <img src="./img/tacho-basura.png" alt="">
-                </button>
-            </li>
-
-            `;
-});
-    elementosCarrito.innerHTML = contenedorCarrito;
-    console.log(carrito);
-
-    totalCarrito.innerHTML =  `<p>Total: $${total.toLocaleString()}</p>`;
-
-    let accionVaciar = "";
-
-    if (carrito.length > 0){ 
-        accionVaciar =  
-            `<button id="btnVaciar" class="btn-vaciar" onclick="vaciarCarrito()"> Vaciar carrito</button>
-            <button id="btnPagar" class="btn-pagar" onclick="">Pagar</button>`;
+    function mostrarCarrito(){
+        let total = 0;
+        let contenedorCarrito = "";
+    
+        carrito.forEach((producto, indice) => {
+            total +=  producto.cantidad * producto.precio;
+            contenedorCarrito +=  `
+                <li class="bloque-item">
+                    <img src="./img/${producto.ruta_img}" alt="${producto.titulo}">
+                    <p class="nombre-item">${producto.titulo} - $${producto.precio.toLocaleString()}</p>
+                    <p>x ${producto.cantidad}</p>
+                    <button onclick="eliminarProducto(${indice})" class="boton-eliminar">
+                        <img src="./img/tacho-basura.png" alt="">
+                    </button>
+                </li>
+    
+                `;
+    });
+        elementosCarrito.innerHTML = contenedorCarrito;
+        console.log(carrito);
+    
+        totalCarrito.innerHTML =  `<p>Total: $${total.toLocaleString()}</p>`;
+    
+        let accionVaciar = "";
+    
+        if (carrito.length > 0){ 
+            accionVaciar =  
+                `<button id="btnVaciar" class="btn-vaciar" onclick="vaciarCarrito()"> Vaciar carrito</button>
+                <button id="btnPagar" class="btn-pagar" onclick="">Pagar</button>`;
+        }
+    
+        botonCarrito.innerHTML = accionVaciar;
+    
+        
+        localStorage.setItem("carrito", JSON.stringify(carrito));
     }
+    
 
-    botonCarrito.innerHTML = accionVaciar;
 
-    /*Punto 6 */
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-}
 
 /*Esta funcion primero chequea si  el producto tiene más de 1 repeticion, si esto se cumple, disminuye la cantidad (cantidad--).
 Y si solo queda 1 lo elimina completamente del array llamando al método splice el cual elimina 1 elemento en la posicion indicada por "indice" */
@@ -172,16 +174,12 @@ function eliminarProducto(indice){
 }
 
 
-/*
-Se reinicia el carrito declarandolo como vacio*/
 function vaciarCarrito(){
     carrito = [];
     mostrarCarrito();
     actualizarContador();
 }
 
-/*
-Esta función se encarga de llevar el conteo de los productos en nuestro carrito cada vez que sucede alguna modificación */
 function actualizarContador(){
     let cantidadEnCarrito = 0;
     for (let i = 0; i < carrito.length; i++) {
