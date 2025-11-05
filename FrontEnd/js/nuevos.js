@@ -1,63 +1,31 @@
 
-import { imprimirDatosAlumno } from "./main.js";
+import {mostrarProductos, listadoProductos, contenedorProducto, imprimirDatosAlumno, url } from "./main.js";
+
+let librosNuevos = []
 
 
-
-async function obtenerLibrosEstado(buleano) {
+export async function obtenerLibrosEstado(buleano) {
     try {
-        const respuesta = await fetch("http://localhost:3000/libros");
-        libros = await respuesta.json();
-        console.log(libros);
+        let respuesta = await fetch(`${url}/products`);
+        console.log(`solicitud fetch GET a ${url}/products`);
         
-        mostrarProductos(filtrarLibrosEstado(buleano));
+        let data = await respuesta.json();
+        console.log(data);
+
+        librosNuevos = data.payload;
+
+        filtrarLibrosEstado(buleano);
     }
     catch(error){
         console.error("Ocurrio un error: ", error)
     }
 }
 
-function filtrarLibrosEstado(buleano){
-    let librosFiltrados = libros.filter(libro => libro.esNuevo == buleano);
-    console.log("Filtrados:", librosFiltrados); 
-    return librosFiltrados;
+export function filtrarLibrosEstado(buleano){
+    let filtrados = librosNuevos.filter(libro => libro.esNuevo == buleano);
+    console.log("Filtrados:", librosNuevos); 
+    mostrarProductos(filtrados);
 }
 
+obtenerLibrosEstado(1);
 
-
-function mostrarProductos(array){
-    contenedorProducto = "";
-
-    array.forEach(libro => {
-        contenedorProducto += `
-            <div class="card-producto">
-                <img src="${libro.ruta_img}" alt="${libro.titulo}">
-                <h3>${libro.titulo}</h3>
-                <p>${libro.autor}<p>
-                <p class="p-precio">$${libro.precio.toLocaleString()}</p>
-                <button onclick= "agregarAlCarrito(${libro.id})">Agregar al carrito</button>
-            </div>
-        `
-    });
-
-    listadoProductos.innerHTML = contenedorProducto;
-
-}
-
-obtenerLibrosEstado(true);
-
-function agregarAlCarrito(id){
-    let libroExistente = carrito.find(libroCarrito => libroCarrito.id == id);
-
-    if (libroExistente){
-        libroExistente.cantidad++;
-    } 
-    else {
-        let libroBuscado = libros.find(libro => libro.id == id);
-            carrito.push(
-                {id: libroBuscado.id, titulo: libroBuscado.titulo, autor:libroBuscado.autor, precio: libroBuscado.precio, ruta_img: libroBuscado.ruta_img, cantidad:1}
-            );
-        }
-
-    actualizarContador();
-    mostrarCarrito();
-    }

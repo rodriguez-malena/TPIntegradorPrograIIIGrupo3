@@ -6,8 +6,8 @@ export const alumnos = [
 let libros = [];
 
 
-let listadoProductos = document.getElementById("listadoProductos");
-let contenedorProducto = "";
+export let listadoProductos = document.getElementById("listadoProductos");
+export let contenedorProducto = "";
 
 let barraBusqueda = document.getElementById("barraBusqueda");
 let elementosCarrito = document.getElementById("elementosCarrito");
@@ -25,9 +25,9 @@ let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 let contenedorProductos = document.getElementById("contenedor-productos");
 
-let url = "http://localhost:3000";
+export let url = "http://localhost:3000";
 
-async function obtenerProductos() {
+export async function obtenerProductos() {
     try {
         let respuesta = await fetch(`${url}/products`);
         console.log(`solicitud fetch GET a ${url}/products`);
@@ -45,7 +45,7 @@ async function obtenerProductos() {
     }
 }
 
-function mostrarProductos(array){
+export function mostrarProductos(array){
     contenedorProducto = "";
 
     array.forEach(libro => {
@@ -64,7 +64,7 @@ function mostrarProductos(array){
 
 }
 
-/*function init() {
+function init() {
     imprimirDatosAlumno();
 
     if (document.getElementById("listadoProductos")) {
@@ -78,11 +78,11 @@ function mostrarProductos(array){
     }
 }
 
-init();*/
+init();
 
-imprimirDatosAlumno();
+/*imprimirDatosAlumno();
 obtenerProductos();
-filtrarProductos();
+filtrarProductos();*/
 
 export function imprimirDatosAlumno(){
     let datosAlumno = document.getElementById("datosAlumno");
@@ -117,12 +117,14 @@ function agregarAlCarrito(id){
                 {id: libroBuscado.id, titulo: libroBuscado.titulo, autor:libroBuscado.autor, precio: libroBuscado.precio, ruta_img: libroBuscado.ruta_img, cantidad:1}
             );
         }
+
     localStorage.setItem("carrito", JSON.stringify(carrito));
     actualizarContador();
     mostrarCarrito();
     }
 
-    function mostrarCarrito(){
+
+function mostrarCarrito(){
         let total = 0;
         let contenedorCarrito = "";
     
