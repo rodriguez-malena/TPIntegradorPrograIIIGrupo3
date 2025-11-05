@@ -93,41 +93,42 @@ export function imprimirDatosAlumno(){
 
 }
 
-window.imprimirDatosAlumno = imprimirDatosAlumno;
 
 function filtrarProductos(){
     barraBusqueda.addEventListener("keyup", function(){
         let itemBuscado = barraBusqueda.value.toLowerCase().trim();
-
+        
         let itemsFiltrados = libros.filter(item => item.titulo.toLowerCase().includes(itemBuscado));
 
         mostrarProductos(itemsFiltrados);
     })
 }
 
-function agregarAlCarrito(id){
+export function agregarAlCarrito(id){
     let libroExistente = carrito.find(libroCarrito => libroCarrito.id == id);
+    let libroBuscado = libros.find(libro => libro.id == id);
 
+    
     if (libroExistente){
         libroExistente.cantidad++;
     } 
     else {
-        let libroBuscado = libros.find(libro => libro.id == id);
-            carrito.push(
-                {id: libroBuscado.id, titulo: libroBuscado.titulo, autor:libroBuscado.autor, precio: libroBuscado.precio, ruta_img: libroBuscado.ruta_img, cantidad:1}
-            );
-        }
-
+        carrito.push(
+            {id: libroBuscado.id, titulo: libroBuscado.titulo, autor:libroBuscado.autor, precio: libroBuscado.precio, ruta_img: libroBuscado.ruta_img, cantidad:1}
+        );
+    }
+    
+    alert(`Agregaste "${libroBuscado.titulo}" al carrito`);
     localStorage.setItem("carrito", JSON.stringify(carrito));
     actualizarContador();
     mostrarCarrito();
     }
-
+    
 
 function mostrarCarrito(){
-        let total = 0;
+    let total = 0;
         let contenedorCarrito = "";
-    
+        
         carrito.forEach((producto, indice) => {
             total +=  producto.cantidad * producto.precio;
             contenedorCarrito +=  `
@@ -139,32 +140,32 @@ function mostrarCarrito(){
                         <img src="./img/tacho-basura.png" alt="">
                     </button>
                 </li>
-    
+                
                 `;
     });
-        elementosCarrito.innerHTML = contenedorCarrito;
-        console.log(carrito);
+    elementosCarrito.innerHTML = contenedorCarrito;
+    console.log(carrito);
     
-        totalCarrito.innerHTML =  `<p>Total: $${total.toLocaleString()}</p>`;
+    totalCarrito.innerHTML =  `<p>Total: $${total.toLocaleString()}</p>`;
     
-        let accionVaciar = "";
+    let accionVaciar = "";
     
-        if (carrito.length > 0){ 
+    if (carrito.length > 0){ 
             accionVaciar =  
                 `<button id="btnVaciar" class="btn-vaciar" onclick="vaciarCarrito()"> Vaciar carrito</button>
                 <button id="btnPagar" class="btn-pagar" onclick="">Pagar</button>`;
-        }
-    
+            }
+            
         botonCarrito.innerHTML = accionVaciar;
-    
+        
         
         localStorage.setItem("carrito", JSON.stringify(carrito));
     }
     
-
-
-
-/*Esta funcion primero chequea si  el producto tiene más de 1 repeticion, si esto se cumple, disminuye la cantidad (cantidad--).
+    
+    
+    
+    /*Esta funcion primero chequea si  el producto tiene más de 1 repeticion, si esto se cumple, disminuye la cantidad (cantidad--).
 Y si solo queda 1 lo elimina completamente del array llamando al método splice el cual elimina 1 elemento en la posicion indicada por "indice" */
 
 function eliminarProducto(indice){
@@ -194,3 +195,6 @@ function actualizarContador(){
     contadorCarrito.innerHTML = `Cantidad: ${cantidadEnCarrito} productos`;
 }
 
+window.agregarAlCarrito = agregarAlCarrito;
+window.eliminarProducto = eliminarProducto;
+window.vaciarCarrito = vaciarCarrito;
