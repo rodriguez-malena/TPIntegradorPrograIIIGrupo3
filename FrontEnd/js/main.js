@@ -1,4 +1,4 @@
-let alumnos = [
+export const alumnos = [
     {dni:"46642416", nombre:"Malena", apellido:"Rodriguez Barrio"},
     {dni:"45071872", nombre:"Aisha", apellido:"Pereyra Sole"}
 ];
@@ -64,7 +64,7 @@ function mostrarProductos(array){
 
 }
 
-function init() {
+/*function init() {
     imprimirDatosAlumno();
 
     if (document.getElementById("listadoProductos")) {
@@ -78,9 +78,13 @@ function init() {
     }
 }
 
-init();
+init();*/
 
-function imprimirDatosAlumno(){
+imprimirDatosAlumno();
+obtenerProductos();
+filtrarProductos();
+
+export function imprimirDatosAlumno(){
     let datosAlumno = document.getElementById("datosAlumno");
     alumnos.forEach(alumno => {
         console.log(`Alumno: ${alumno.nombre}, Apellido: ${alumno.apellido}, DNI: ${alumno.dni}`);

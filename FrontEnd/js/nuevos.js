@@ -1,32 +1,5 @@
 
-/*import {imprimirDatosAlumno, obtenerLibros, mostrarProductos, libros } from "./script.js";
-
-async function initNuevos(){
-    imprimirDatosAlumno();
-    await obtenerLibros(); 
-    const librosNuevos = libros.filter(libro => libro.esNuevo === true);
-    console.log("Filtrados:", librosNuevos);
-    mostrarProductos(librosNuevos);
-}
-
-initNuevos();*/
-let alumnos = [
-    {dni:"46642416", nombre:"Malena", apellido:"Rodriguez Barrio"},
-    {dni:"45071872", nombre:"Aisha", apellido:"Pereyra Sole"}
-];
-
-
-
-
-
-function imprimirDatosAlumno(){
-    let datosAlumno = document.getElementById("datosAlumno");
-    alumnos.forEach(alumno => {
-        console.log(`Alumno: ${alumno.nombre}, Apellido: ${alumno.apellido}, DNI: ${alumno.dni}`);
-        datosAlumno.innerHTML += `${alumno.nombre} ${alumno.apellido} </br>`;
-    })
-
-}
+import { imprimirDatosAlumno } from "./main.js";
 
 
 
@@ -48,6 +21,9 @@ function filtrarLibrosEstado(buleano){
     console.log("Filtrados:", librosFiltrados); 
     return librosFiltrados;
 }
+
+
+
 function mostrarProductos(array){
     contenedorProducto = "";
 
