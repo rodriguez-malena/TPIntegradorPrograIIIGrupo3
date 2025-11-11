@@ -4,28 +4,28 @@ import {mostrarProductos, listadoProductos, contenedorProducto, url, agregarAlCa
 let librosNuevos = []
 
 
-export async function obtenerLibrosEstado(buleano) {
+export async function obtenerLibrosEstado(estado) {
     try {
         let respuesta = await fetch(`${url}/products`);
-        console.log(`solicitud fetch GET a ${url}/products`);
+        console.log(`Solicitud fetch GET a ${url}/products`);
         
         let data = await respuesta.json();
         console.log(data);
 
         librosNuevos = data.payload;
 
-        filtrarLibrosEstado(buleano);
+        filtrarLibrosEstado(estado);
     }
     catch(error){
         console.error("Ocurrio un error: ", error)
     }
 }
 
-export function filtrarLibrosEstado(buleano){
-    let filtrados = librosNuevos.filter(libro => libro.esNuevo == buleano);
-    console.log("Filtrados:", librosNuevos); 
+export function filtrarLibrosEstado(estado){
+    let filtrados = librosNuevos.filter(libro => libro.categoria.toLowerCase() == estado.toLowerCase());
+    console.log("Filtrados:", filtrados); 
     mostrarProductos(filtrados);
 }
 
-obtenerLibrosEstado(1);
+obtenerLibrosEstado("Nuevo");
 

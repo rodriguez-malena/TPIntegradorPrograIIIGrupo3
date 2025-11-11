@@ -30,7 +30,7 @@ export let url = "http://localhost:3000";
 export async function obtenerProductos() {
     try {
         let respuesta = await fetch(`${url}/products`);
-        console.log(`solicitud fetch GET a ${url}/products`);
+        console.log(`Solicitud fetch GET a ${url}/products`);
         
         let data = await respuesta.json();
         console.log(data);
@@ -51,7 +51,7 @@ export function mostrarProductos(array){
     array.forEach(libro => {
         contenedorProducto += `
             <div class="card-producto">
-                <img src="./img/${libro.ruta_img}" alt="${libro.titulo}">
+                <img src="${libro.ruta_img}" alt="${libro.titulo}">
                 <h3>${libro.titulo}</h3>
                 <p>${libro.autor}<p>
                 <p class="p-precio">$${libro.precio.toLocaleString()}</p>
@@ -63,6 +63,8 @@ export function mostrarProductos(array){
     listadoProductos.innerHTML = contenedorProducto;
 
 }
+
+
 
 function init() {
     imprimirDatosAlumno();
@@ -133,7 +135,7 @@ function mostrarCarrito(){
             total +=  producto.cantidad * producto.precio;
             contenedorCarrito +=  `
                 <li class="bloque-item">
-                    <img src="./img/${producto.ruta_img}" alt="${producto.titulo}">
+                    <img src="${producto.ruta_img}" alt="${producto.titulo}">
                     <p class="nombre-item">${producto.titulo} - $${producto.precio.toLocaleString()}</p>
                     <p>x ${producto.cantidad}</p>
                     <button onclick="eliminarProducto(${indice})" class="boton-eliminar">
