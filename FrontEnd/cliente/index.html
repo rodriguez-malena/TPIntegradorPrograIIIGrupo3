@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entre líneas - Usados</title>
+    <title>Entre Líneas | Tu librería online</title>
     <link rel="icon" type="image/png" href="./img/libro.png">
     <link rel="stylesheet" href="./css/style.css">
 
@@ -11,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
 </head>
-<body>
+    <body>
     <header>
         <div class="registro">
             <div class="logo-titulo">
@@ -28,16 +29,22 @@
         <div>
             <nav class="barra-navegacion">
                 <ul class="menu-horizontal">
-                    <li><a href="./index.html">
-                        <img src="./img/casa.png" alt="Icono de casa">
-                    </a></li>
                     <li><a href="./carrito.html">
-                        <img src="./img/carrito.png" alt="Icono de carrito">
+                        <img src="./img/carrito.png" alt="Icono de carrito de compras">
                     </a></li>
                     <li>
                         <a href="./index.html">Productos</a>
                         <ul class="menu-vertical">
-                            <li><a href="./librosNuevos.html">Nuevos</a></li>
+                            <li> <a href="./librosNuevos.html">Nuevos</a></li>
+                            <li><a href="./librosUsados.html">Usados</a></li>
+                            <li><a href="./index.html">TODOS</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="./index.html">Productos</a>
+                        <ul class="menu-vertical">
+                            <li> <a href="./librosNuevos.html">Nuevos</a></li>
+                            <li><a href="./librosUsados.html">Usados</a></li>
                             <li><a href="./index.html">TODOS</a></li>
                         </ul>
                     </li>
@@ -47,7 +54,7 @@
     </header>
 
     <main>
-        <h2>Nuestros Libros Usados</h2>
+        <h2>Nuestros Libros</h2>
 
         <section id="listadoProductos">
             <!--<div class="card-producto">
@@ -57,8 +64,11 @@
                 <button>Agregar al carrito</button>
             </div>-->
         </section>
-    </main>
-    <script type="module" src="./js/usados.js"></script>
 
+    </main>
+    
+
+
+<script type="module" src="./js/main.js"></script>
 </body>
 </html>
