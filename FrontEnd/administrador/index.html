@@ -3,25 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel Admin | Entre Líneas</title>
-    <link rel="icon" type="image/png" href="./img-admin/rueda.png">
+    <title>Panel de administracion</title>
+
     <link rel="stylesheet" href="./css/styles-admin.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
 </head>
-    <body>
-        <header>
-            <div class="registro">
-                <div class="logo-titulo">
-                    <img src="./img-admin/rueda.png" alt="Icono de rueda">
-                    <h1>Panel de Administración</h1>
-
-                </div>
-                
-            </div>
-            <nav>
+<header>
+    <nav>
         <ul>
             <a href="index.html">
                 <li>Ver</li>
@@ -43,20 +30,22 @@
 </header>
 <body>
     <main>
-        <h1>Listado productos</h1>
+        <h1>Panel de administracion | Entre lineas</h1>
         <hr>
         <section id="contenedor-productos"></section>
     </main>
-    <script>
 
+    
+    <script>
+        
     let contenedorProductos = document.getElementById("contenedor-productos");
     let url = "http://localhost:3000";
 
     async function obtenerProductos() {
         try {
-            let response = await fetch(`${url}/`);
+            let response = await fetch(`${url}/api/products`);
 
-            console.log(`Solicitud fetch GET a ${url}/`);
+            console.log(`Solicitud fetch GET a ${url}/api/products`);
 
             let data = await response.json();
 
@@ -98,5 +87,3 @@
     </script>
 </body>
 </html>
-        
-        

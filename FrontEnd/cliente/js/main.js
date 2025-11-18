@@ -29,8 +29,8 @@ export let url = "http://localhost:3000";
 
 export async function obtenerProductos() {
     try {
-        let respuesta = await fetch(`${url}/products`);
-        console.log(`Solicitud fetch GET a ${url}/products`);
+        let respuesta = await fetch(`${url}/api/products`);
+        console.log(`Solicitud fetch GET a ${url}/api/products`);
         
         let data = await respuesta.json();
         console.log(data);
