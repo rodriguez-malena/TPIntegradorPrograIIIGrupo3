@@ -6,8 +6,8 @@ let librosNuevos = []
 
 export async function obtenerLibrosEstado(estado) {
     try {
-        let respuesta = await fetch(`${url}/products`);
-        console.log(`Solicitud fetch GET a ${url}/products`);
+        let respuesta = await fetch(`${url}/api/products`);
+        console.log(`Solicitud fetch GET a ${url}/api/products`);
         
         let data = await respuesta.json();
         console.log(data);
