@@ -1,7 +1,7 @@
 :root{
     --cremita: rgb(248, 234, 207);
     --marron: #452C27;
-    --fuente-titulos:"Barriecito", system-ui;
+    --fuente-titulos:"Vend Sans", sans-serif;
     --fuente-secundaria: "Nunito Sans", sans-serif;
     --shadow: 0 6px 10px rgba(70, 39, 5, 0.15);
 }
@@ -15,48 +15,43 @@ body{
 ====================*/
 header {
     background-color: var(--marron);
-    color: var(--cremita);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     box-shadow: var(--shadow);
+    padding: 1rem;
 }
 
-.registro {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-}
 
 .logo-titulo {
     display:flex;
+    justify-content: start;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
+    gap: 0.5rem;
+}
+
+.logo-titulo img {
+    width: 40px;
+    height: 40px;
 }
 
 h1 {
     font-family: var(--fuente-titulos);
     font-weight: 400;
     font-style: normal;
-    margin: 0;
-}
-
-header img {
-    width: 50px;
-    height: auto;
 }
 
 
 nav ul {
     display: flex;
     justify-content: space-between;
+    list-style: none;
 }
 
-nav li {
-    list-style-type: none;
+nav li a{
+    color: var(--cremita);
+    text-decoration: none;
+
 }
+
+
 
 /*===============
     main
@@ -66,17 +61,17 @@ nav li {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 1rem
 }
 
 .card-producto {
     width: 250px;
-    border: 2px solid;
     display: flex;
+    gap: 1rem;
     flex-direction: column;
     align-items: center;
-    height: 250px;
+    height: auto;
     margin: 2px;
-    text-align: center;
     padding: 1 rem;
     border-radius: 5px;
     box-shadow:  0 6px 10px rgba(70, 39, 5, 0.15);
@@ -95,18 +90,117 @@ nav li {
 .card-producto p {
     margin: 0;
 }
+
 #lista-productos{
     display:flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-    width: 100%;
+    align-items: center;
+    gap: 2rem;
+    width: 50%;
+    
 }
+
+/*===============
+    Consultar id
+================*/
 
 .li-producto {
     display: flex;
     padding-left: 0;
     justify-content: space-between;
+    gap: 1rem;
+}
+
+.li-producto img {
+    width: 100px;
+    height: auto;
+}
+
+#getProduct-form {
+    display: flex;
+    align-items: center;     
+    gap: 1rem;               
+    width: fit-content;   /* Ajusta el ancho al contenido */
+}
+
+.ingresoId {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 
+.input-submit {
+    font-family: var(--fuente-secundaria);
+    background-color: var(--marron);
+    padding: 0.5rem;
+    color: var(--cremita);
+    border: none;
+    border-radius: 3px;
+    cursor:pointer;
+}
+
+.input-submit:hover {
+    color: white;
+}
+
+.input-ingreso {
+    width: 200px;   
+    border: 1px solid var(--cremita);
+    border-radius: 8px;
+    padding: 0.2rem;
+    font-size: 15px;
+
+}
+
+/*===============
+    Crear
+=================*/
+#altaProucts-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    gap: 0.5rem;
+    margin: 0 auto; 
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: var(--cremita);
+    color: var(--marron);
+    box-shadow:  0 6px 10px rgba(70, 39, 5, 0.15);
+}
+
+.input-datos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+select option {
+    color: var(--marron);
+    background-color: var(--cremita);
+}
+
+.input-enviar {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/*===============
+    Actualizar
+=================*/
+.li-botonera {
+    list-style: none;
+}
+
+#updateProducts_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 0 auto; 
+    color: var(--marron);
+    box-shadow:  0 6px 10px rgba(70, 39, 5, 0.15);
+}

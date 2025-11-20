@@ -3,43 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultar</title>
-
+    <title>Panel de administracion | Consultar</title>
     <link rel="stylesheet" href="./css/styles-admin.css">
+    <link rel="stylesheet" href="./css/styles-admin.css">
+    <link rel="icon" type="image/png" href="./img-admin/rueda.png">
+        
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Vend+Sans:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
 </head>
+</head>
+<body>
 <header>
     <nav>
         <ul>
-            <a href="index.html">
-                <li>Ver</li>
-            </a>
-            <a href="consultar.html">
-                <li>Consultar id </li>
-            </a>
-            <a href="crear.html">
-                <li>Crear</li>
-            </a>
-            <a href="modificar.html">
-                <li>Modificar</li>
-            </a>
-            <a href="eliminar.html">
-                <li>Eliminar</li>
-            </a>
+            <li><a href="index.html">Ver</a></li>
+            <li><a href="consultar.html">Consultar id</a></li>
+            <li><a href="crear.html">Crear</a></li>
+            <li><a href="modificar.html">Modificar</a></li>
+            <li><a href="eliminar.html">Eliminar</a></li>           
         </ul>
     </nav>
 </header>
-<body>
     <main>
-        <h1>Consultar producto por id</h1>
+        <div class="logo-titulo">
+            <img src="./img-admin/lupita.png" alt="Imagen de lupa">
+                <h1>Consultar producto por id</h1>
+        </div>
 
         <form id="getProduct-form">
-            <label for="idProd">Id del Producto</label>
-            <input type="number" name="idProd" id="idProd" required>
+            <div class="ingresoId">
+                <label for="idProd">Id del Producto</label>
+                <input class="input-ingreso" type="number" name="idProd" id="idProd" required>
+            </div>
             
-            <input type="submit" value="consultar producto">
+            <input class="input-submit" type="submit" value="Buscar">
         </form>
-
-        <hr>
 
         <section id="contenedor-productos">
             <ul id="lista-productos"></ul>
@@ -47,8 +46,7 @@
     </main>
 
     <script>
-        // seleccionamos elementos del DOM
-        // let contenedorProductos = document.getElementById("contenedor-productos")
+    
         let listaProductos = document.getElementById("lista-productos");
         let getProductForm = document.getElementById("getProduct-form");
 
@@ -93,7 +91,7 @@
             let htmlProducto = `
                 <li class="li-producto">
                     <img src="${producto.ruta_img}">
-                    <p>ID: ${producto.id} / ${producto.titulo} /  Precio $${producto.precio}</p>
+                    <p>ID: ${producto.id} <br> ${producto.titulo} - ${producto.autor} <br> Precio $${producto.precio}</p>
                 </li>`; //Insertar resultado en la página
                 
                 listaProductos.innerHTML= htmlProducto;

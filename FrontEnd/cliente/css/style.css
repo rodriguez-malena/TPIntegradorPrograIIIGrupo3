@@ -86,7 +86,6 @@ li img {
     padding: 8px;
     margin: 0;
     display: flex;
-    
     color:  var(--cremita);
     text-decoration: none;
 }
@@ -103,8 +102,6 @@ li img {
     top: 100%;
     left: 50%; 
     padding: 0;
-
-    
     transform: translateX(-50%); /* centra horizontalmente */
 }
 

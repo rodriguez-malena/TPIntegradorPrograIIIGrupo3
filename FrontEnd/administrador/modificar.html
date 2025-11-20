@@ -3,43 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tp Integrador Front</title>
+    <title>Panel de administracion | Modificar</title>
     <link rel="stylesheet" href="css/styles-admin.css">
-    
+    <link rel="icon" type="image/png" href="./img-admin/rueda.png">
+        
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Vend+Sans:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <a href="index.html">
-                    <li>Ver</li>
-                </a>
-                <a href="consultar.html">
-                    <li>Consultar id</li>
-                </a>
-                <a href="crear.html">
-                    <li>Crear</li>
-                </a>
-                <a href="modificar.html">
-                    <li>Modificar</li>
-                </a>
-                <a href="eliminar.html">
-                    <li>Eliminar</li>
-                </a>
+                <li><a href="index.html">Ver</a></li>
+                <li><a href="consultar.html">Consultar id</a></li>
+                <li><a href="crear.html">Crear</a></li>
+                <li><a href="modificar.html">Modificar</a></li>
+                <li><a href="eliminar.html">Eliminar</a></li>  
             </ul>
         </nav>
     </header>
     <main>
-        <h1>Actualizar producto</h1>
+        <div class="logo-titulo">
+            <img src="./img-admin/boligrafo.png" alt="Imagen de boligrafo">
+                <h1>Actualizar producto</h1>
+        </div>
 
         <form id="getProduct-form">
-            <label for="idProd">Id del producto</label>
-            <input type="number" name="idProd" id="idProd" required>
-
-            <input type="submit" value="Consultar producto">
+            <div class="ingresoId">
+                <label for="idProd">Id del Producto</label>
+                <input class="input-ingreso" type="number" name="idProd" id="idProd" required>
+            </div>
+            
+            <input class="input-submit" type="submit" value="Buscar">
         </form>
 
-        <hr>
         <section id="contenedor-productos">
             <ul id="lista-productos"></ul>
         </section>
@@ -86,10 +84,10 @@
             let htmlProducto = `
                 <li class="li-producto">
                         <img class="producto-img" src="${producto.ruta_img}" alt="${producto.titulo}">
-                        <p>Id: ${producto.id} / Nombre: ${producto.titulo} / <strong>Precio: ${producto.precio}</strong></p>
+                        <p>ID: ${producto.id} <br> ${producto.titulo} - ${producto.autor} <br> Precio $${producto.precio}</p>
                 </li>
                 <li class="li-botonera">
-                    <input type="button" id="updateProduct_button" value="Actualizar producto">
+                    <input class="input-submit" type="button" id="updateProduct_button" value="Actualizar producto">
                 </li>
             `;
 
@@ -111,29 +109,32 @@
 
             let updateFormHTML = `
                 <form id="updateProducts_form">
+                    <div class="input-datos">
+                        <input class="input-ingreso" type="hidden" name="id" id="idUpdate" value="${producto.id}">
 
-                <input type="hidden" name="id" id="idProd" value="${producto.id}">
+                        <label for="tituloProd">Titulo</label>
+                        <input class="input-ingreso" type="text" name="titulo" id="tituloProd" value="${producto.titulo}" required>
 
-                <label for="tituloProd">Titulo</label>
-                <input type="text" name="titulo" id="tituloProd" value="${producto.titulo}" required>
+                        <label for="autorProd">Autor</label>
+                        <input class="input-ingreso" type="text" name="autor" id="autorProd" value="${producto.autor}" required>
+                        
+                        <label for="imageProd">Imagen</label>
+                        <input class="input-ingreso" type="text" name="ruta_img" id="imageProd" value="${producto.ruta_img}" required>
+                        
+                        <label for="precioProd">Precio</label>
+                        <input class="input-ingreso" type="number" name="precio" id="precioProd" value="${producto.precio}" required>
 
-                <label for="autorProd">Autor</label>
-                <input type="text" name="autor" id="autorProd" value="${producto.autor}" required>
-                
-                <label for="imageProd">Imagen</label>
-                <input type="text" name="ruta_img" id="imageProd" value="${producto.ruta_img}" required>
-                
-                <label for="precioProd">Precio</label>
-                <input type="number" name="precio" id="precioProd" value="${producto.precio}" required>
+                        <label for="categoriaProd">Categoría</label>
+                        <select class="input-ingreso" name="categoria" id="categoriaProd">
+                            <option value="usado">Usado</option>
+                            <option value="nuevo">Nuevo</option>
+                        </select>
+                    </div>
 
-                <label for="categoriaProd">Categoría</label>
-                <select name="categoria" id="categoriaProd">
-                    <option value="usado">Usado</option>
-                    <option value="nuevo">Nuevo</option>
-                </select>
+                    <div class="input-enviar">
+                        <input class="input-submit" type="submit" value="Actualizar">
+                    </div>
 
-
-                <input type="submit" value="Actualizar producto">
                 </form>
             `;
 
@@ -159,7 +160,7 @@
             console.log(data); // Ya tenemos como objetos JS los datos de nuestro formulario anterior con las nuevas modificaciones
 
             try {
-                let response = await fetch(`${url}api/products/${data.id}`, {
+                let response = await fetch(`${url}/api/products/${data.id}`, {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json"
