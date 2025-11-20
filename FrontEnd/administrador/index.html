@@ -17,6 +17,7 @@
                 <div class="logo-titulo">
                     <img src="./img-admin/rueda.png" alt="Icono de rueda">
                     <h1>Panel de Administración</h1>
+                    <div id="datosAlumno"></div>
 
                 </div>
                 
@@ -47,55 +48,8 @@
         <hr>
         <section id="contenedor-productos"></section>
     </main>
-    <script>
 
-    let contenedorProductos = document.getElementById("contenedor-productos");
-    let url = "http://localhost:3000";
-
-    async function obtenerProductos() {
-        try {
-            let response = await fetch(`${url}/`);
-
-            console.log(`Solicitud fetch GET a ${url}/`);
-
-            let data = await response.json();
-
-            console.log(data);
-            let productos = data.payload;
-            console.log(productos);
-
-            mostrarProductos(productos);
-
-        } catch (error) {
-            console.error("Error obteniendo productos: ", error);
-        }
-    }
-
-
-    function mostrarProductos(array) {
-        let htmlProductos = "";
-
-        array.forEach(prod => {
-            htmlProductos += `
-                <div class="card-producto">
-                    <img class="producto-img" src="${prod.ruta_img}" alt="${prod.titulo}">
-                    <h3>${prod.titulo}</h3>
-                    <p>Id: ${prod.id}</p>
-                    <p>$${prod.precio}</p>
-                </div>
-            `;
-        });
-
-        contenedorProductos.innerHTML = htmlProductos;
-    }
-
-    function init() {
-        obtenerProductos();
-    }
-
-    init();
-    </script>
-    </script>
+    <script type="module" src="./js/main.js"> </script>
 </body>
 </html>
         

@@ -128,6 +128,7 @@ export function agregarAlCarrito(id){
     
 
 function mostrarCarrito(){
+    carritoPersonalizado.textContent = `Carrito de compras de ${localStorage.getItem('nombreCliente')}`;
     let total = 0;
         let contenedorCarrito = "";
         
@@ -196,6 +197,8 @@ function actualizarContador(){
     }
     contadorCarrito.innerHTML = `Cantidad: ${cantidadEnCarrito} productos`;
 }
+
+
 
 window.agregarAlCarrito = agregarAlCarrito;
 window.eliminarProducto = eliminarProducto;
