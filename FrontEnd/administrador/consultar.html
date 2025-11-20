@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de administracion | Consultar</title>
+    <link rel="stylesheet" href="./css/styles-admin.css">
+    <link rel="stylesheet" href="./css/styles-admin.css">
+    <link rel="icon" type="image/png" href="./img-admin/rueda.png">
+        
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Vend+Sans:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+</head>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Ver</a></li>
+            <li><a href="consultar.html">Consultar id</a></li>
+            <li><a href="crear.html">Crear</a></li>
+            <li><a href="modificar.html">Modificar</a></li>
+            <li><a href="eliminar.html">Eliminar</a></li>           
+        </ul>
+    </nav>
+</header>
+    <main>
+        <div class="logo-titulo">
+            <img src="./img-admin/lupita.png" alt="Imagen de lupa">
+                <h1>Consultar producto por id</h1>
+        </div>
+
+        <form id="getProduct-form">
+            <div class="ingresoId">
+                <label for="idProd">Id del Producto</label>
+                <input class="input-ingreso" type="number" name="idProd" id="idProd" required>
+            </div>
+            
+            <input class="input-submit" type="submit" value="Buscar">
+        </form>
+
+        <section id="contenedor-productos">
+            <ul id="lista-productos"></ul>
+        </section>
+    </main>
+
+    <script>
+    
+        let listaProductos = document.getElementById("lista-productos");
+        let getProductForm = document.getElementById("getProduct-form");
+
+        let url = "http://localhost:3000";
+
+        getProductForm.addEventListener("submit", async (event) => {
+            
+            event.preventDefault(); //prevenimos enviar x defecto el formulario, evita que recargue la página
+
+            // Tenemos que obtener los datos del formulario, por lo tanto se crea un objeto FormData
+            let formData = new FormData(event.target); // FormData permite leer inputs del formulario
+
+            // Transformamos a objetos JS los valores de FormData
+            let data = Object.fromEntries(formData.entries());
+            console.log(data); // {idProd: '2'}
+
+            let idProd = data.idProd; // guardo id
+            console.log(`Realizando una peticion GET a la url ${url}/api/products/${idProd}`);
+
+            //Enviamos en una petición GET el id pegado en la url
+            let respuesta = await fetch(`${url}/api/products/${idProd}`) //solicitud GET
+            
+            let datos = await respuesta.json();
+            
+            if(respuesta.ok){
+                // Extraemos de la respuesta payload, el primer resultado que contiene el objeto que consultamos
+                let productos = datos.payload[0]; //accede al objeto del producto devuelto. Payload: los datos que realmente necesitamos
+                console.log(productos);
+                mostrarProductos(productos);
+
+            } else {
+                console.log(datos);
+                console.log(datos.message);
+
+                mostrarError(datos.message);
+            }
+            
+        });
+
+
+        function mostrarProductos(producto) {
+            let htmlProducto = `
+                <li class="li-producto">
+                    <img src="${producto.ruta_img}">
+                    <p>ID: ${producto.id} <br> ${producto.titulo} - ${producto.autor} <br> Precio $${producto.precio}</p>
+                </li>`; //Insertar resultado en la página
+                
+                listaProductos.innerHTML= htmlProducto;
+        }
+
+        function mostrarError(message) {
+            listaProductos.innerHTML = `
+                <li class="message-error">
+                    <p>
+                        <strong> Error: <spam>${message}"</spam> </strong>
+                    </p>
+                </li>`
+                ;
+        }
+
+/*==========================
+        Que es FormData?
+============================
+
+FormData es una interfaz nativa de JavaScript que permite crear un conjunto de pares clave-valor 
+que representan los campos de un formulario HTML y sus respectivos valores.
+
+Esta clase se utiliza principalmente para capturar y enviar datos de formularios, 
+ya sea mediante métodos como fetch o XMLHttpRequest, 
+y se encarga de formatear los datos correctamente como multipart/form-data, 
+estableciendo automáticamente los encabezados necesarios para el envío
+*/
+    
+    </script>
+</body>
+</html>
