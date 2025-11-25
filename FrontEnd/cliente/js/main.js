@@ -47,11 +47,11 @@ export async function obtenerProductos() {
 
 export function mostrarProductos(array){
     contenedorProducto = "";
-
+//ACA HAY QUE PONER SINOPSIS
     array.forEach(libro => {
         contenedorProducto += `
             <div class="card-producto">
-                <span class="sinopsis-ver">${libro.titulo}</span> //ACA HAY QUE PONER SINOPSIS
+                <span class="sinopsis-ver">${libro.titulo}</span> 
                 <img src="${libro.ruta_img}" alt="${libro.titulo}">
                 <h3>${libro.titulo}</h3>
                 <p>${libro.autor}<p>
