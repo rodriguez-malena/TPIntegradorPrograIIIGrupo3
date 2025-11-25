@@ -142,6 +142,7 @@ h2 {
 }
 
 .card-producto {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -150,6 +151,31 @@ h2 {
     padding: 1rem;
     border-radius: 5px;
     box-shadow: var(--shadow);
+}
+
+/*tooltip*/
+.sinopsis-ver {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 200px;
+    
+    background: var(--marron);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+.card-producto:hover .sinopsis-ver {
+    visibility: visible;
+    opacity: 1;
 }
 
 .card-producto h3 {

@@ -51,6 +51,7 @@ export function mostrarProductos(array){
     array.forEach(libro => {
         contenedorProducto += `
             <div class="card-producto">
+                <span class="sinopsis-ver">${libro.titulo}</span> //ACA HAY QUE PONER SINOPSIS
                 <img src="${libro.ruta_img}" alt="${libro.titulo}">
                 <h3>${libro.titulo}</h3>
                 <p>${libro.autor}<p>
@@ -61,7 +62,6 @@ export function mostrarProductos(array){
     });
 
     listadoProductos.innerHTML = contenedorProducto;
-
 }
 
 
