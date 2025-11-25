@@ -139,8 +139,14 @@ function mostrarCarrito(){
                     <img src="${producto.ruta_img}" alt="${producto.titulo}">
                     <p class="nombre-item">${producto.titulo} - $${producto.precio.toLocaleString()}</p>
                     <p>x ${producto.cantidad}</p>
+                    <button onclick="restarProducto(${indice})" class="boton-restar">
+                        <img src="./img-cliente/restar.png" alt="-">
+                    </button>
+                    <button onclick="sumarProducto(${indice})" class="boton-sumar">
+                        <img src="./img-cliente/sumar.png" alt="+">
+                    </button>
                     <button onclick="eliminarProducto(${indice})" class="boton-eliminar">
-                        <img src="./img/tacho-basura.png" alt="">
+                        <img src="./img-cliente/tacho-basura.png" alt="X">
                     </button>
                 </li>
                 
@@ -171,7 +177,7 @@ function mostrarCarrito(){
     /*Esta funcion primero chequea si  el producto tiene más de 1 repeticion, si esto se cumple, disminuye la cantidad (cantidad--).
 Y si solo queda 1 lo elimina completamente del array llamando al método splice el cual elimina 1 elemento en la posicion indicada por "indice" */
 
-function eliminarProducto(indice){
+function restarProducto(indice){
     if (carrito[indice].cantidad > 1){
         carrito[indice].cantidad--;
         
@@ -183,6 +189,17 @@ function eliminarProducto(indice){
     actualizarContador();
 }
 
+function sumarProducto(indice){
+    carrito[indice].cantidad++;
+    mostrarCarrito();
+    actualizarContador();
+}
+
+function eliminarProducto(indice){
+        carrito.splice(indice,1);    
+    mostrarCarrito();
+    actualizarContador();
+}
 
 function vaciarCarrito(){
     carrito = [];
@@ -198,8 +215,8 @@ function actualizarContador(){
     contadorCarrito.innerHTML = `Cantidad: ${cantidadEnCarrito} productos`;
 }
 
-
-
 window.agregarAlCarrito = agregarAlCarrito;
+window.restarProducto = restarProducto;
+window.sumarProducto = sumarProducto;
 window.eliminarProducto = eliminarProducto;
 window.vaciarCarrito = vaciarCarrito;

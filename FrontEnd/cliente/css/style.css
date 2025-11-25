@@ -226,13 +226,13 @@ CARRITO
     justify-content: space-between;
 }
 
-.boton-eliminar{
+.boton-eliminar, .boton-sumar, .boton-restar{
     background-color: transparent;
     border: none;
     cursor:pointer;
 }
 
-.boton-eliminar img {
+.boton-eliminar img , .boton-sumar img, .boton-restar img{
     width: 30%;
 }
 
