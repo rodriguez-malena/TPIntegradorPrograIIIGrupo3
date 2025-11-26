@@ -10,6 +10,8 @@ body{
     background-color: white;
     font-family:  var(--fuente-secundaria);
 }
+
+
 /*==================
     HEADER
 ====================*/
@@ -56,14 +58,9 @@ header img {
     border-radius: 8px;
     }
 
-
-#datosAlumno {
-    text-align: center;
-    margin-top: 0.5rem;
-}
-
-
-.menu-horizontal{
+    
+    
+    .menu-horizontal{
     list-style: none;
     display: flex;
     flex-wrap: wrap;
@@ -164,8 +161,8 @@ h2 {
     width: max-content;
     max-width: 200px;
     
-    background: var(--marron);
-    color: white;
+    background: var(--cremita);
+    color: var(--marron);
     padding: 6px 10px;
     border-radius: 5px;
     font-size: 14px;
@@ -287,7 +284,7 @@ CARRITO
 .btn-vaciar:hover, .btn-pagar:hover {
     border: 1px solid var(--marron);
 }
-.boton-eliminar:hover {
+.boton-eliminar:hover , .boton-sumar:hover, .boton-restar:hover{
     transform: scale(1.05)
 }
 
@@ -331,3 +328,18 @@ input:focus {
     border: 1px solid var(--marron);
     box-shadow: 0 0 5px var(--marron);
 }
+
+/*==============
+FOOTER
+======================*/
+
+footer {
+    margin-top: 1rem;
+    background-color: var(--cremita);
+    color: var(--marron);
+    
+}
+    
+#datosAlumno {
+        text-align:right;
+    }
