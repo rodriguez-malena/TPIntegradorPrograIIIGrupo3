@@ -47,15 +47,17 @@ export async function obtenerProductos() {
 
 export function mostrarProductos(array){
     contenedorProducto = "";
-//ACA HAY QUE PONER SINOPSIS
     array.forEach(libro => {
         contenedorProducto += `
             <div class="card-producto">
-                <span class="sinopsis-ver">${libro.sinopsis}</span> 
                 <img src="${libro.ruta_img}" alt="${libro.titulo}">
                 <h3>${libro.titulo}</h3>
-                <p>${libro.autor}<p>
                 <p class="p-precio">$${libro.precio.toLocaleString()}</p>
+
+                <a href="sinopsis.html?id=${libro.id}">
+                    <button>Ver detalle</button>
+                </a>
+
                 <button onclick= "agregarAlCarrito(${libro.id})">Agregar al carrito</button>
             </div>
         `
@@ -63,6 +65,9 @@ export function mostrarProductos(array){
 
     listadoProductos.innerHTML = contenedorProducto;
 }
+
+//                <span class="sinopsis-ver">${libro.sinopsis}</span> 
+
 
 
 

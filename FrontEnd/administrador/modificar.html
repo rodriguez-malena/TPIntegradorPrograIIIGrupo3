@@ -77,9 +77,18 @@
             let datos = await response.json();
             console.log(datos);
 
-             // Extraemos de la respuesta payload, el primer resultado que contiene el objeto que consultamos
-            let producto = datos.payload[0]; // Accedo al objeto que se encuentra en la posicion 0 de payload
-            console.log(producto);
+            if(response.ok){
+                 // Extraemos de la respuesta payload, el primer resultado que contiene el objeto que consultamos
+                let producto = datos.payload[0]; // Accedo al objeto que se encuentra en la posicion 0 de payload
+                console.log(producto);
+                
+
+            } else {
+                console.log(datos);
+                console.log(datos.message);
+
+                mostrarError(datos.message);
+            }
 
             let htmlProducto = `
                 <li class="li-producto">
@@ -190,9 +199,19 @@
                 }
 
             } catch (error) {
-
+                    console.log("Error: ", error)
             }
             
+        }
+
+        function mostrarError(message) {
+            listaProductos.innerHTML = `
+                <li class="message-error">
+                    <p>
+                        <strong><spam>${message}"</spam> </strong>
+                    </p>
+                </li>`
+                ;
         }
 
     </script>

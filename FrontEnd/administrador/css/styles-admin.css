@@ -89,6 +89,7 @@ nav li a{
 
 .card-producto p {
     margin: 0;
+    text-align: center;
 }
 
 #lista-productos{
@@ -203,4 +204,24 @@ select option {
     margin: 0 auto; 
     color: var(--marron);
     box-shadow:  0 6px 10px rgba(70, 39, 5, 0.15);
+}
+
+/*=================
+Eliminar
+=================*/
+
+.estado-activo {
+    color: green;
+    font-weight: bold;
+}
+
+.estado-inactivo {
+    color: red;
+    font-weight: bold;
+}
+
+
+.message-error {
+    list-style: none;
+    color: var(--marron);
 }

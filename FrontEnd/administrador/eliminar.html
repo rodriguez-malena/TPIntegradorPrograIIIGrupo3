@@ -60,12 +60,18 @@
             let respuesta = await fetch(`${url}/api/products/${idProd}`);
             let datos = await respuesta.json();
 
-            if (!datos.payload || datos.payload.length === 0) {
-                listaProductos.innerHTML = "<li>No existe un producto con ese ID</li>";
-                return;
+            if(respuesta.ok){
+                
+                let producto = datos.payload[0];
+                console.log(producto);
+            
+            } else {
+                console.log(datos);
+                console.log(datos.message);
+
+                mostrarError(datos.message);
             }
 
-            let producto = datos.payload[0];
 
             let htmlProducto = `
                 <li class="li-producto">
@@ -92,7 +98,7 @@
                 });
 
                 if (!respuesta.ok) {
-                    alert("No se pudo eliminar el producto.");
+                    alert("No se pudo dar de baja el producto.");
                     return;
                 }
 
@@ -106,6 +112,16 @@
                 console.error("Error al hacer DELETE:", error);
                 alert("Ocurrió un error al intentar eliminar el producto.");
             }
+        }
+
+        function mostrarError(message) {
+            listaProductos.innerHTML = `
+                <li class="message-error">
+                    <p>
+                        <strong>${message}</strong>
+                    </p>
+                </li>`
+                ;
         }
     </script>
 

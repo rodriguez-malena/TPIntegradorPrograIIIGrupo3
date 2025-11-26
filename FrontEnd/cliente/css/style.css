@@ -150,27 +150,8 @@ h2 {
     box-shadow: var(--shadow);
 }
 
-/*tooltip*/
-.sinopsis-ver {
-    visibility: hidden;
-    opacity: 0;
-    position: absolute;
-    top: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: max-content;
-    max-width: 200px;
-    
-    background: var(--cremita);
-    color: var(--marron);
-    padding: 6px 10px;
-    border-radius: 5px;
-    font-size: 14px;
 
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-.card-producto:hover .sinopsis-ver {
+.card-producto:hover  {
     visibility: visible;
     opacity: 1;
 }
@@ -259,7 +240,7 @@ CARRITO
     width: 30%;
 }
 
-.btn-vaciar {
+.btn-vaciar,  .btn-volver{
     font-family: var(--fuente-secundaria);
     background-color: transparent;
     padding: 0.5rem;
@@ -284,7 +265,7 @@ CARRITO
 .btn-vaciar:hover, .btn-pagar:hover {
     border: 1px solid var(--marron);
 }
-.boton-eliminar:hover , .boton-sumar:hover, .boton-restar:hover{
+.boton-eliminar:hover , .boton-sumar:hover, .boton-restar:hover, .btn-volver:hover {
     transform: scale(1.05)
 }
 
@@ -343,3 +324,30 @@ footer {
 #datosAlumno {
         text-align:right;
     }
+
+/*===============
+SINOPSIS
+==================*/
+
+
+.contenedor-sinopsis {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contenedor-sinopsis img {
+    width: 150px;
+    height: auto;
+}
+
+.sinopsis-detalle {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.sinopsis-button {
+    text-align: center;
+}

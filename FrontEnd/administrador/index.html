@@ -61,14 +61,19 @@
 
             function mostrarProductos(array) {
                 let htmlProductos = "";
-
+                
                 array.forEach(prod => {
                     htmlProductos += `
                         <div class="card-producto">
                             <img class="producto-img" src="${prod.ruta_img}" alt="${prod.titulo}">
                             <h3>${prod.titulo}</h3>
-                            <p>Id: ${prod.id}</p>
-                            <p>$${prod.precio}</p>
+                            <p>
+                                Id: ${prod.id}<br>
+                                $${prod.precio}<br>
+                                Estado: <span class="${prod.activo === 1 ? "estado-activo" : "estado-inactivo"}">
+                                ${prod.activo === 1? "Activo" : "Inactivo"}
+                                </span>
+                            </p>
                         </div>
                     `;
                 });
