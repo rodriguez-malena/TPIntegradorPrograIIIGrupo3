@@ -11,7 +11,7 @@ formularioAdministrador.addEventListener('submit', function(evento) {
     evento.preventDefault(); 
     const mailAdministrador = inputAdministrador.value.trim();
     if (mailAdministrador && clave.value) {
-        window.location.href = 'index.html';
+        window.location.href = 'http://localhost:3000';
     } else {
         alert('Por favor, llene los campos');
     }
