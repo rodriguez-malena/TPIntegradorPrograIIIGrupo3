@@ -1,14 +1,30 @@
 :root{
     --cremita: rgb(248, 234, 207);
+    --cremin: rgb(233, 229, 222);
     --marron: #452C27;
+    --marron-claro: #664D4D;
     --fuente-titulos:"Vend Sans", sans-serif;
     --fuente-secundaria: "Nunito Sans", sans-serif;
     --shadow: 0 6px 10px rgba(70, 39, 5, 0.15);
+    --iluminador: 0 1px 10px rgba(248, 234, 207, 0.15);
 }
 
 body{
-    background-color: white;
+    background-color: var(--cremin);
     font-family:  var(--fuente-secundaria);
+}
+
+.tema2{
+    background-color: var(--marron-claro);
+    color: var(--cremita);
+} 
+
+.tema2 h1{
+    color: var(--cremita);
+}
+
+.tema2 header,.tema2 .card-producto, .tema2 #updateProducts_form, .tema2 #altaProucts-container{
+    box-shadow: var(--iluminador);
 }
 /*==================
     HEADER
@@ -74,7 +90,7 @@ nav li a{
     margin: 2px;
     padding: 1 rem;
     border-radius: 5px;
-    box-shadow:  0 6px 10px rgba(70, 39, 5, 0.15);
+    box-shadow:  var(--shadow);
 }
 
 
@@ -167,7 +183,7 @@ nav li a{
     border-radius: 5px;
     background-color: var(--cremita);
     color: var(--marron);
-    box-shadow:  0 6px 10px rgba(70, 39, 5, 0.15);
+    box-shadow:  var(--shadow);
 }
 
 .input-datos {
@@ -203,10 +219,10 @@ select option {
     border-radius: 5px;
     margin: 0 auto; 
     color: var(--marron);
-    box-shadow:  0 6px 10px rgba(70, 39, 5, 0.15);
+    box-shadow:  var(--shadow);
 }
 
-/*=================
+/*==============
 Eliminar
 =================*/
 

@@ -1,6 +1,5 @@
-
-    <body>
-        <header>
+<body class="tema1">
+    <header>
             <nav>
                 <ul>
                     <li><a href="index.html">Ver</a></li>
@@ -8,6 +7,7 @@
                     <li><a href="crear.html">Crear</a></li>
                     <li><a href="modificar.html">Modificar</a></li>
                     <li><a href="eliminar.html">Eliminar</a></li>  
+                    <li><button id="cambiarTema">Tema</button></li>
                 </ul>
             </nav>
         </header>
@@ -64,9 +64,18 @@
                         </div>
                     `;
                 });
-
                 contenedorProductos.innerHTML = htmlProductos;
             }
+
+            //Cambiar tema
+            let body = document.body;
+            let cambiarTema = document.getElementById('cambiarTema');
+            body.classList.toggle('tema2', localStorage.getItem('modo')==='t2')
+            cambiarTema.addEventListener('click', () => {
+                let tema = body.classList.toggle('tema2');
+                localStorage.setItem('modo', tema ? 't2' : 't1')
+            })
+//
 
             function init() {
                 obtenerProductos();

@@ -1,15 +1,33 @@
 :root{
     --cremita: rgb(248, 234, 207);
+    --cremin: rgb(233, 229, 222);
     --marron: #452C27;
+    --marron-claro: #664D4D;
     --fuente-titulos:"Barriecito", system-ui;
     --fuente-secundaria: "Nunito Sans", sans-serif;
     --shadow: 0 6px 10px rgba(70, 39, 5, 0.15);
+    --iluminador: 0 1px 10px rgba(248, 234, 207, 0.15);
 }
 
 body{
-    background-color: white;
     font-family:  var(--fuente-secundaria);
+    background-color: var(--cremin);
+    color: var(--marron);
 }
+
+.tema2{
+    background-color: var(--marron-claro);
+    color: var(--cremita);
+} 
+
+.tema2 h2{
+    color: var(--cremita);
+}
+
+.tema2 header,.tema2 .card-producto, .tema2 .card-producto button,.tema2 .bloque-item,.tema2 .btn-vaciar,.tema2 .btn-pagar,.tema2 .boton-eliminar,.tema2 .boton-sumar,.tema2 .boton-restar{
+    box-shadow: var(--iluminador);
+}
+
 
 
 /*==================
@@ -178,7 +196,8 @@ h2 {
     border-radius: 5px;
     box-shadow: var(--shadow);
     border: none;
-    background-color: transparent;
+    background-color: var(--marron);
+    color: var(--cremita);
     cursor: pointer;
     margin-top: 1rem;
 
@@ -242,7 +261,7 @@ CARRITO
 
 .btn-vaciar,  .btn-volver{
     font-family: var(--fuente-secundaria);
-    background-color: transparent;
+    background-color: var(--cremita);
     padding: 0.5rem;
     color: var(--marron);
     box-shadow: var(--shadow);
@@ -318,14 +337,16 @@ footer {
     margin-top: 1rem;
     background-color: var(--cremita);
     color: var(--marron);
+    border-radius: 5px;
     
 }
     
 #datosAlumno {
         text-align:right;
-    }
+    margin-right: 1rem;
+}
 
-/*===============
+    /*===============
 SINOPSIS
 ==================*/
 
