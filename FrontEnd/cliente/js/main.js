@@ -65,7 +65,6 @@ export function mostrarProductos(array){
     listadoProductos.innerHTML = contenedorProducto;
 }
 
-//                <span class="sinopsis-ver">${libro.sinopsis}</span> 
 
 
 
@@ -75,6 +74,10 @@ function init() {
     
     if (document.getElementById("listadoProductos")) {
         obtenerProductos();
+        filtrarProductos();
+    }
+
+    if (document.getElementById("barraBusqueda")) {
         filtrarProductos();
     }
     
@@ -101,6 +104,7 @@ export function imprimirDatosAlumno(){
 
 
 function filtrarProductos(){
+
     barraBusqueda.addEventListener("keyup", function(){
         let itemBuscado = barraBusqueda.value.toLowerCase().trim();
         

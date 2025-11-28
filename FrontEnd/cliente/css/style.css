@@ -1,5 +1,5 @@
 :root{
-    --cremita: rgb(248, 234, 207);
+    --cremita: #f8eacf;
     --cremin: rgb(233, 229, 222);
     --marron: #452C27;
     --marron-claro: #664D4D;
@@ -15,6 +15,18 @@ body{
     color: var(--marron);
 }
 
+/*========================
+TEMA
+======================*/
+#cambiarTema {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#cambiarTema img {
+    width: 30px;
+}
 .tema2{
     background-color: var(--marron-claro);
     color: var(--cremita);
