@@ -7,6 +7,7 @@ let libros = [];
 
 export let listadoProductos = document.getElementById("listadoProductos");
 export let contenedorProducto = "";
+export let filtroActual = null;
 
 //
 let contenedorProductos = document.getElementById("contenedor-productos");
@@ -17,6 +18,11 @@ let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 
 export let url = "http://localhost:3000";
+
+function estaEnCarrito(id) {
+    return carrito.some(item => item.id === id);
+}
+
 
 export async function obtenerProductos() {
     try {
@@ -29,7 +35,7 @@ export async function obtenerProductos() {
         libros = data.payload;
         console.log(libros);
         
-        mostrarProductos(libros);
+        mostrarProductos(filtroActual || libros);
     } 
     catch (error) {
         console.error("error: ", error);
@@ -37,9 +43,18 @@ export async function obtenerProductos() {
 }
 
 export function mostrarProductos(array){
+    filtroActual = array;
     contenedorProducto = "";
     array.forEach(libro => {
         if (libro.activo ===1){
+
+            let botonEliminar ="";
+            if (estaEnCarrito(libro.id)){
+                botonEliminar = `
+                <button onclick="eliminarProductoCarrito(${libro.id})" 
+                class="btn-eliminar-carrito">Eliminar del carrito</button>`;
+            }
+
             contenedorProducto += `
                 <div class="card-producto">
                     <img src="${libro.ruta_img}" alt="${libro.titulo}">
@@ -51,7 +66,9 @@ export function mostrarProductos(array){
                     </a>
 
                     <button onclick= "agregarAlCarrito(${libro.id})">Agregar al carrito</button>
-                </div>`
+                    
+                    ${botonEliminar}
+                    </div>`
         }
     });
     listadoProductos.innerHTML = contenedorProducto;
@@ -83,12 +100,19 @@ export function agregarAlCarrito(id){
     
     alert(`Agregaste "${libroBuscado.titulo}" al carrito`);
     localStorage.setItem("carrito", JSON.stringify(carrito));
+    mostrarProductos(filtroActual || libros);
     //actualizarContador();
     //mostrarCarrito();
 }
 
-window.agregarAlCarrito = agregarAlCarrito;
+export function eliminarDelCarrito(id){
+    carrito = carrito.filter(item => item.id !== id);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    mostrarProductos(filtroActual || libros); 
+}
 
+window.agregarAlCarrito = agregarAlCarrito;
+window.eliminarProductoCarrito = eliminarDelCarrito;
 
 export function imprimirDatosAlumno(){
     let datosAlumno = document.getElementById("datosAlumno");

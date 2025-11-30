@@ -1,5 +1,5 @@
 
-import {mostrarProductos, listadoProductos, contenedorProducto, url, agregarAlCarrito } from "./main.js";
+import {mostrarProductos, url} from "./main.js";
 
 let librosNuevos = []
 
