@@ -47,21 +47,21 @@ export async function obtenerProductos() {
 export function mostrarProductos(array){
     contenedorProducto = "";
     array.forEach(libro => {
-        contenedorProducto += `
-            <div class="card-producto">
-                <img src="${libro.ruta_img}" alt="${libro.titulo}">
-                <h3>${libro.titulo}</h3>
-                <p class="p-precio">$${libro.precio.toLocaleString()}</p>
+        if (libro.activo ===1){
+            contenedorProducto += `
+                <div class="card-producto">
+                    <img src="${libro.ruta_img}" alt="${libro.titulo}">
+                    <h3>${libro.titulo}</h3>
+                    <p class="p-precio">$${libro.precio.toLocaleString()}</p>
 
-                <a href="sinopsis.html?id=${libro.id}">
-                    <button>Ver detalle</button>
-                </a>
+                    <a href="sinopsis.html?id=${libro.id}">
+                        <button>Ver detalle</button>
+                    </a>
 
-                <button onclick= "agregarAlCarrito(${libro.id})">Agregar al carrito</button>
-            </div>
-        `
+                    <button onclick= "agregarAlCarrito(${libro.id})">Agregar al carrito</button>
+                </div>`
+        }
     });
-    
     listadoProductos.innerHTML = contenedorProducto;
 }
 
