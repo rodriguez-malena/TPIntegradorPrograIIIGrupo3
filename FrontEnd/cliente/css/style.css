@@ -214,6 +214,9 @@ h2 {
     margin-top: 1rem;
 
 }
+.card-producto .btn-eliminar-carrito {
+    background-color: #640019;
+}
 
 .card-producto button:hover {
     color:#BA8173;
