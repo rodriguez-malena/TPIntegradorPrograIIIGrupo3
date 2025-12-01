@@ -8,13 +8,14 @@ formularioCliente.addEventListener('submit', function(evento) {
     evento.preventDefault(); 
 
     const nombreCliente = inputCliente.value.trim();
+
     if (nombreCliente) {
         localStorage.setItem('nombreCliente', nombreCliente);
         window.location.href = 'index.html';
+
     } else {
         alert('Por favor ¡¡¡ingresa tu nombre para continuar!!!');
     }
     
 });
 
-imprimirDatosAlumno();

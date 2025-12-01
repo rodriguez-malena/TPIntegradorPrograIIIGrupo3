@@ -36,7 +36,7 @@ TEMA
     color: var(--cremita);
 }
 
-.tema2 header,.tema2 .card-producto, .tema2 .card-producto button,.tema2 .bloque-item,.tema2 .btn-vaciar,.tema2 .btn-pagar,.tema2 .boton-eliminar,.tema2 .boton-sumar,.tema2 .boton-restar{
+.tema2 header,.tema2 .card-producto, .tema2 .card-producto button,.tema2 .bloque-item,.tema2 .btn-vaciar,.tema2 .btn-imprimir,.tema2 .boton-eliminar,.tema2 .boton-sumar,.tema2 .boton-restar{
     box-shadow: var(--iluminador);
 }
 
@@ -285,7 +285,7 @@ CARRITO
     cursor:pointer;
 }
 
-.btn-pagar {
+.btn-imprimir {
     font-family: var(--fuente-secundaria);
     background-color: var(--marron);
     padding: 0.5rem;
@@ -296,7 +296,7 @@ CARRITO
     cursor:pointer;
 }
 
-.btn-vaciar:hover, .btn-pagar:hover {
+.btn-vaciar:hover, .btn-imprimir:hover {
     border: 1px solid var(--marron);
 }
 .boton-eliminar:hover , .boton-sumar:hover, .boton-restar:hover, .btn-volver:hover {

@@ -1,32 +1,32 @@
 import { initTema } from "./tema.js";
+import { verificarLogin } from "./verificar.js";
 
 export const alumnos = [
     {dni:"46642416", nombre:"Malena", apellido:"Rodriguez Barrio"},
     {dni:"45071872", nombre:"Aisha", apellido:"Pereyra Sole"}
 ];
 
-let libros = [];
 
 let listadoProductos = document.getElementById("listadoProductos");
 let contenedorProducto = "";
 export let filtroActual = null;
 
-//
+
 let contenedorProductos = document.getElementById("contenedor-productos");
 let botonesOrdenar = document.getElementById("botonesSeccionProductos");
-// 
+
+let libros = [];
 
 // Productos actualmente visibles en esta página
 let productosActuales = [];
 
-const usuario = localStorage.getItem('nombreCliente');
+const usuario = verificarLogin();
+
 const keyCarrito = 'carrito_' + usuario;
 
 let carrito = JSON.parse(localStorage.getItem(keyCarrito)) || [];
 
-
 export let url = "http://localhost:3000";
-
 
 export async function obtenerProductos() {
     try {
@@ -123,7 +123,7 @@ export function agregarAlCarrito(id){
 
 export function eliminarDelCarrito(id){
     carrito = carrito.filter(item => item.id !== id);
-    localStorage.setItem("carrito", JSON.stringify(carrito));
+    localStorage.setItem(keyCarrito, JSON.stringify(carrito));
     mostrarProductos(filtroActual || libros); 
 }
 
@@ -141,7 +141,7 @@ export function imprimirDatosAlumno(){
 
 function init() {
     imprimirDatosAlumno();
-    initTema()
+    initTema();
     
     if (document.getElementById("listadoProductos")) {
         obtenerProductos();

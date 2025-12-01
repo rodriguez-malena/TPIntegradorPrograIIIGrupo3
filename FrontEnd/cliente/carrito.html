@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito | Entre Líneas</title>
     <link rel="icon" type="image/png" href="../imagen-gral/libro.png">
     <link rel="stylesheet" href="./css/style.css">
-
+    
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
 </head>
+<body>
 <header>
     <div class="registro">
         <div class="logo-titulo">
@@ -35,38 +37,35 @@
                 </ul>
             </nav>
         </div>
-</header>
-<body>
+    </header>
     <main>
         <h2 id="carritoPersonalizado"></h2>
         <section id="carrito">
             <div class="contenedor-carrito">
-                    <ul id="elementosCarrito">
+                <ul id="elementosCarrito">
                     <!--<li class="bloque-item">
                         <p class="nombre-item">nombreProducto - precioProducto</p>
                         <button class="boton-restar"><img src="./img-cliente/restar.png" alt="-"></button>
                         <button class="boton-sumar"><img src="./img-cliente/sumar.png" alt="+"></button>
                         <button class="boton-eliminar"><img src="./img-cliente/tacho-basura.png" alt="X"></button>
-                        </li>-->
+                    </li>-->
                     </ul>
-
+                    
                 <div class="acciones-carrito">
                     <div id="contadorCarrito"></div>
                     <div id="totalCarrito"></div>
                     <div id="botonCarrito"></div>
-                    <div id="botonPagar"></div>
+                    
                 </div>
             </div>
         </section>
     </main>
-    <script type="module" src="./js/carrito.js"></script>
-
     <footer>
         <hr>
-        <button id="cambiarTema">
-            <img src="./img-cliente/icono-tema.png" alt="Icono de cambio de tema">
-        </button>
-        <div id="datosAlumno"></div>
     </footer>
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script type="module" src="./js/carrito.js"></script>
 </body>
 </html>
