@@ -1,4 +1,3 @@
-import { obtenerLibrosEstado, filtrarLibrosEstado} from "./nuevos.js";
-
+import { obtenerLibrosEstado} from "./nuevos.js";
 
 obtenerLibrosEstado("Usado");

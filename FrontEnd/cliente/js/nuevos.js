@@ -1,31 +1,33 @@
+import { mostrarProductos, setProductosActuales, url } from "./main.js";
 
-import {mostrarProductos, url} from "./main.js";
-
-let librosNuevos = []
-
+let librosNuevos = [];
 
 export async function obtenerLibrosEstado(estado) {
     try {
         let respuesta = await fetch(`${url}/api/products`);
-        console.log(`Solicitud fetch GET a ${url}/api/products`);
-        
         let data = await respuesta.json();
-        console.log(data);
 
         librosNuevos = data.payload;
 
-        filtrarLibrosEstado(estado);
-    }
-    catch(error){
-        console.error("Ocurrio un error: ", error)
+        // Filtrar por la categoría pedida
+        let filtrados = filtrarLibrosEstado(estado);
+
+        setProductosActuales(filtrados);
+
+        // Mostrar solo los nuevos
+        mostrarProductos(filtrados);
+
+    } catch(error) {
+        console.error("Ocurrió un error: ", error);
     }
 }
 
-export function filtrarLibrosEstado(estado){
-    let filtrados = librosNuevos.filter(libro => libro.categoria.toLowerCase() == estado.toLowerCase());
-    console.log("Filtrados:", filtrados); 
-    mostrarProductos(filtrados);
+export function filtrarLibrosEstado(estado) {
+    let filtrados = librosNuevos.filter(libro => 
+        libro.categoria.toLowerCase() === estado.toLowerCase()
+    );
+    console.log("Filtrados:", filtrados);
+    return filtrados;  
 }
 
 obtenerLibrosEstado("Nuevo");
-

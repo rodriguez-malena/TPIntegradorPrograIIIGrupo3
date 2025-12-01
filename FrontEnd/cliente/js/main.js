@@ -1,3 +1,5 @@
+import { initTema } from "./tema.js";
+
 export const alumnos = [
     {dni:"46642416", nombre:"Malena", apellido:"Rodriguez Barrio"},
     {dni:"45071872", nombre:"Aisha", apellido:"Pereyra Sole"}
@@ -5,23 +7,25 @@ export const alumnos = [
 
 let libros = [];
 
-export let listadoProductos = document.getElementById("listadoProductos");
-export let contenedorProducto = "";
+let listadoProductos = document.getElementById("listadoProductos");
+let contenedorProducto = "";
 export let filtroActual = null;
 
 //
 let contenedorProductos = document.getElementById("contenedor-productos");
 let botonesOrdenar = document.getElementById("botonesSeccionProductos");
 // 
-let barraBusqueda = document.getElementById("barraBusqueda");
-let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+// Productos actualmente visibles en esta página
+let productosActuales = [];
+
+const usuario = localStorage.getItem('nombreCliente');
+const keyCarrito = 'carrito_' + usuario;
+
+let carrito = JSON.parse(localStorage.getItem(keyCarrito)) || [];
 
 
 export let url = "http://localhost:3000";
-
-function estaEnCarrito(id) {
-    return carrito.some(item => item.id === id);
-}
 
 
 export async function obtenerProductos() {
@@ -35,11 +39,16 @@ export async function obtenerProductos() {
         libros = data.payload;
         console.log(libros);
         
-        mostrarProductos(filtroActual || libros);
+        
+        mostrarProductos(libros);
     } 
     catch (error) {
         console.error("error: ", error);
     }
+}
+
+function estaEnCarrito(id) {
+    return carrito.some(item => item.id === id);
 }
 
 export function mostrarProductos(array){
@@ -47,7 +56,7 @@ export function mostrarProductos(array){
     contenedorProducto = "";
     array.forEach(libro => {
         if (libro.activo ===1){
-
+            
             let botonEliminar ="";
             if (estaEnCarrito(libro.id)){
                 botonEliminar = `
@@ -56,12 +65,12 @@ export function mostrarProductos(array){
             }
 
             contenedorProducto += `
-                <div class="card-producto">
-                    <img src="${libro.ruta_img}" alt="${libro.titulo}">
-                    <h3>${libro.titulo}</h3>
-                    <p class="p-precio">$${libro.precio.toLocaleString()}</p>
-
-                    <a href="sinopsis.html?id=${libro.id}">
+            <div class="card-producto">
+            <img src="${libro.ruta_img}" alt="${libro.titulo}">
+            <h3>${libro.titulo}</h3>
+            <p class="p-precio">$${libro.precio.toLocaleString()}</p>
+            
+            <a href="sinopsis.html?id=${libro.id}">
                         <button>Ver detalle</button>
                     </a>
 
@@ -69,17 +78,24 @@ export function mostrarProductos(array){
                     
                     ${botonEliminar}
                     </div>`
-        }
+                }
     });
     listadoProductos.innerHTML = contenedorProducto;
 }
 
-function filtrarProductos(){
+
+
+//Para que otras páginas sepan qué productos manejar
+export function setProductosActuales(lista) {
+    productosActuales = lista;
+}
+
+export function filtrarProductos(){
+let barraBusqueda = document.getElementById("barraBusqueda");
 
     barraBusqueda.addEventListener("keyup", function(){
         let itemBuscado = barraBusqueda.value.toLowerCase().trim();
-        
-        let itemsFiltrados = libros.filter(item => item.titulo.toLowerCase().includes(itemBuscado));
+        let itemsFiltrados = productosActuales.filter(item => item.titulo.toLowerCase().includes(itemBuscado));
         
         mostrarProductos(itemsFiltrados);
     })
@@ -99,10 +115,10 @@ export function agregarAlCarrito(id){
     }
     
     alert(`Agregaste "${libroBuscado.titulo}" al carrito`);
-    localStorage.setItem("carrito", JSON.stringify(carrito));
+    localStorage.setItem(keyCarrito, JSON.stringify(carrito));
+    
     mostrarProductos(filtroActual || libros);
-    //actualizarContador();
-    //mostrarCarrito();
+
 }
 
 export function eliminarDelCarrito(id){
@@ -125,6 +141,7 @@ export function imprimirDatosAlumno(){
 
 function init() {
     imprimirDatosAlumno();
+    initTema()
     
     if (document.getElementById("listadoProductos")) {
         obtenerProductos();
@@ -135,24 +152,7 @@ function init() {
         filtrarProductos();
     }
     
-    if (document.getElementById("elementosCarrito")) {
-        mostrarCarrito();
-        actualizarContador();
-    }
 }
 
 init();
 
-/*imprimirDatosAlumno();
-obtenerProductos();
-filtrarProductos();*/
-
-//Cambiar tema
-let body = document.body;
-let cambiarTema = document.getElementById('cambiarTema');
-body.classList.toggle('tema2', localStorage.getItem('modo')==='t2')
-cambiarTema.addEventListener('click', () => {
-    let tema = body.classList.toggle('tema2');
-    localStorage.setItem('modo', tema ? 't2' : 't1')
-})
-//

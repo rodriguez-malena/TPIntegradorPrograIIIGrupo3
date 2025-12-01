@@ -1,4 +1,16 @@
-let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+import { initTema } from "./tema.js";
+
+initTema();
+
+// Obtener el nombre del cliente
+const usuario = localStorage.getItem("nombreCliente");
+
+// Crear la clave única para este usuario
+const keyCarrito = "carrito_" + usuario;
+
+// Cargar carrito del usuario
+let carrito = JSON.parse(localStorage.getItem(keyCarrito)) || [];
+
 let elementosCarrito = document.getElementById("elementosCarrito");
 let totalCarrito = document.getElementById("totalCarrito");
 let botonCarrito = document.getElementById("botonCarrito");
@@ -8,25 +20,30 @@ let botonPagar = document.getElementById("botonPagar");
 
 
 function mostrarCarrito(){
-    carritoPersonalizado.textContent = `Carrito de compras de ${localStorage.getItem('nombreCliente')}`;
+    carritoPersonalizado.textContent = `Carrito de compras de ${usuario}`;
+    
     let total = 0;
     let contenedorCarrito = "";
 
     carrito.forEach((producto, indice) => {
         total += producto.cantidad * producto.precio;
+
         contenedorCarrito +=  `
         <li class="bloque-item">
             <img src="${producto.ruta_img}" alt="${producto.titulo}">
             <p class="nombre-item">${producto.titulo} - $${producto.precio.toLocaleString()}</p>
             <p>x ${producto.cantidad}</p>
+
             <button onclick="restarProducto(${indice})" class="boton-restar">
-            <img src="./img-cliente/restar.png" alt="-">
+                <img src="./img-cliente/restar.png" alt="-">
             </button>
+
             <button onclick="sumarProducto(${indice})" class="boton-sumar">
-            <img src="./img-cliente/sumar.png" alt="+">
+                <img src="./img-cliente/sumar.png" alt="+">
             </button>
+
             <button onclick="eliminarProducto(${indice})" class="boton-eliminar">
-            <img src="./img-cliente/tacho-basura.png" alt="X">
+                <img src="./img-cliente/tacho-basura.png" alt="X">
             </button>
         </li>`;
     });
@@ -41,10 +58,13 @@ function mostrarCarrito(){
         `<button id="btnVaciar" class="btn-vaciar" onclick="vaciarCarrito()"> Vaciar carrito</button>
         <button id="btnPagar" class="btn-pagar" onclick="">Pagar</button>`;
     }
+
     botonCarrito.innerHTML = accionVaciar;
 
-    localStorage.setItem("carrito", JSON.stringify(carrito));
+    // Guardar carrito del usuario correspondiente
+    localStorage.setItem(keyCarrito, JSON.stringify(carrito));
 }
+
 
 function restarProducto(indice) {
     if (carrito[indice].cantidad > 1) {
@@ -75,10 +95,7 @@ function vaciarCarrito() {
 }
 
 function actualizarContador() {
-    let cantidadEnCarrito = 0;
-    for (let i = 0; i < carrito.length; i++) {
-        cantidadEnCarrito += carrito[i].cantidad;
-    }
+    let cantidadEnCarrito = carrito.reduce((acc, item) => acc + item.cantidad, 0);
     contadorCarrito.innerHTML = `Cantidad: ${cantidadEnCarrito} productos`;
 }
 

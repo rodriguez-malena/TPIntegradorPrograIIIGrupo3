@@ -355,9 +355,15 @@ footer {
     border-radius: 5px;
     
 }
-    
+
+
+.contenedor-footer {
+    display: flex;
+    justify-content: space-between;
+
+}
 #datosAlumno {
-        text-align:right;
+    text-align:right;
     margin-right: 1rem;
 }
 
