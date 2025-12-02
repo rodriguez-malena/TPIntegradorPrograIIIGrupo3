@@ -36,21 +36,20 @@ TEMA
     color: var(--cremita);
 }
 
-.tema2 header,.tema2 .card-producto, .tema2 .card-producto button,.tema2 .bloque-item,.tema2 .btn-vaciar,.tema2 .btn-imprimir,.tema2 .boton-eliminar,.tema2 .boton-sumar,.tema2 .boton-restar{
+.tema2 header,.tema2 .card-producto, .tema2 .card-producto button,.tema2 .bloque-item,.tema2 .btn-vaciar,.tema2{
     box-shadow: var(--iluminador);
 }
-
-
 
 /*==================
     HEADER
 ====================*/
 header {
-    background-color: var(--marron);
-    color: var(--cremita);
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    background-color: var(--marron);
+    color: var(--cremita);
     box-shadow: var(--shadow);
 }
 
@@ -63,6 +62,7 @@ header {
 
 .logo-titulo {
     display:flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 1rem;
@@ -246,6 +246,7 @@ CARRITO
 
 .bloque-item {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 2rem;
     list-style: none;

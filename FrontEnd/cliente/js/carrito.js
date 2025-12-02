@@ -1,3 +1,6 @@
+import { initTema } from "./tema.js";
+initTema();
+
 
 // Obtener el nombre del cliente
 const usuario = localStorage.getItem("nombreCliente");

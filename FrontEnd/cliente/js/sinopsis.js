@@ -1,6 +1,5 @@
 import { initTema } from "./tema.js";
 
-
 let url = "http://localhost:3000";
 const detalleLibro = document.getElementById("detalle-libro");
 
