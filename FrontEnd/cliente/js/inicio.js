@@ -17,6 +17,6 @@ formularioCliente.addEventListener('submit', function(evento) {
         alert('Por favor ¡¡¡ingresa tu nombre para continuar!!!');
     }
 
-    
+
 });
 
