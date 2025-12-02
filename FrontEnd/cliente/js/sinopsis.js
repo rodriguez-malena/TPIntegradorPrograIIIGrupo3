@@ -1,6 +1,8 @@
 import { initTema } from "./tema.js";
 import { imprimirDatosAlumno, url } from "./main.js";
 
+initTema();
+
 const detalleLibro = document.getElementById("detalle-libro");
 
 // Leer el ID desde la URL
@@ -16,11 +18,6 @@ async function cargarLibro() {
     try {
         const response = await fetch(`${url}/api/products/${id}`);
         const data = await response.json();
-
-        if(!data.payload || data.payload.length === 0) {
-            detalleLibro.innerHTML = "<p>Libro no encontrado</p>";
-            return;
-        }
 
         const libro = data.payload[0];
 
