@@ -52,8 +52,8 @@ function estaEnCarrito(id) {
 }
 
 export function mostrarProductos(array){
-    filtroActual = array;
-    contenedorProducto = "";
+    filtroActual = array; // guardo estado actual
+    contenedorProducto = ""; //limpio
     array.forEach(libro => {
         if (libro.activo ===1){
             
