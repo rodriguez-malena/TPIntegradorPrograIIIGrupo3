@@ -11,7 +11,7 @@
 
 body{
     font-family:  var(--fuente-secundaria);
-    background-color: var(--cremin);
+    background-color: white;
     color: var(--marron);
 }
 
