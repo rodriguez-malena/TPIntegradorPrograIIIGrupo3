@@ -1,4 +1,5 @@
 import { initTema } from "./tema.js";
+import { imprimirDatosAlumno } from "./main.js";
 initTema();
 
 

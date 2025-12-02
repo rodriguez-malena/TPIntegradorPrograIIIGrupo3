@@ -1,6 +1,6 @@
 import { initTema } from "./tema.js";
+import { imprimirDatosAlumno, url } from "./main.js";
 
-let url = "http://localhost:3000";
 const detalleLibro = document.getElementById("detalle-libro");
 
 // Leer el ID desde la URL
