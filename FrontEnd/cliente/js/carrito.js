@@ -51,8 +51,8 @@ function mostrarCarrito(){
     
     if (carrito.length > 0) { 
         accionVaciar = 
-        `<button id="btnVaciar" class="btn-vaciar" onclick="vaciarCarrito()"> Vaciar carrito</button>
-        <button id="btnImprimir" class="btn-imprimir" onclick="">Imprimir ticket</button>`;
+        `<button id="btnVaciar" class="btn-vaciar">Vaciar carrito</button>
+        <button id="btnImprimir" class="btn-imprimir">Imprimir ticket</button>`;
     }
 
     botonCarrito.innerHTML = accionVaciar;
@@ -63,6 +63,11 @@ function mostrarCarrito(){
     const btnImprimir = document.getElementById("btnImprimir");
     if (btnImprimir) {
         btnImprimir.addEventListener("click", imprimirTicket);
+    }
+
+    const btnVaciar = document.getElementById("btnVaciar");
+    if (btnVaciar) {
+        btnVaciar.addEventListener("click", vaciarCarrito);
     }
 }
 
@@ -205,4 +210,3 @@ mostrarCarrito();
 window.restarProducto = restarProducto;
 window.sumarProducto = sumarProducto;
 window.eliminarProducto = eliminarProducto;
-window.vaciarCarrito = vaciarCarrito;
