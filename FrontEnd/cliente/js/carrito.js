@@ -133,14 +133,18 @@ function imprimirTicket(){
 
         idProductos.push(producto.id); // llenamos el array con los ids
 
-        doc.text(`${producto.titulo} x ${producto.cantidad} = $${producto.precio}`, 10, y) // creamos el texto
+        const subtotal = producto.precio * producto.cantidad;
+
+        doc.text(`${producto.titulo}  x${producto.cantidad}  = $${subtotal.toLocaleString()}`, 10,  y);
 
         // incrementamos 7px la posicion vertical para evitar solapamiento
         y += 7;
     });
 
     //calculamos el total del ticket usando reduce
-    const total = carrito.reduce((total, producto) => total + parseInt(producto.precio), 0 )
+    const total = carrito.reduce((acc, producto) => {
+        return acc + producto.precio * producto.cantidad;
+    }, 0);
     
     // añadimos 5px en el eje vertical para separar productos del total
     y +=5;
