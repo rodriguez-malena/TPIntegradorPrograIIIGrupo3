@@ -12,9 +12,6 @@ let contenedorProducto = "";
 export let filtroActual = null;
 
 
-let contenedorProductos = document.getElementById("contenedor-productos");
-let botonesOrdenar = document.getElementById("botonesSeccionProductos");
-
 let libros = [];
 
 // Productos actualmente visibles en esta página
@@ -41,6 +38,7 @@ export async function obtenerProductos() {
         
         
         mostrarProductos(libros);
+        setProductosActuales(libros); 
     } 
     catch (error) {
         console.error("error: ", error);
