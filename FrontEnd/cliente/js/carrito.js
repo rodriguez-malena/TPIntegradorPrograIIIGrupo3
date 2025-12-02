@@ -201,7 +201,7 @@ async function registrarVenta(total, idProductos) {
         alert("Ticket impreso!")
         //limpieza y redireccion
         localStorage.removeItem(keyCarrito);
-        localStorage.removeItem("usuario");
+        localStorage.removeItem("nombreCliente");
         localStorage.removeItem("carrito");
         window.location.href = "inicioCliente.html";
     //}
