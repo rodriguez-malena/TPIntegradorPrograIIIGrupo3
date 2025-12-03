@@ -286,7 +286,7 @@ CARRITO
     cursor:pointer;
 }
 
-.btn-imprimir {
+.btn-imprimir,.btn-cancelar, .btn-confirmar {
     font-family: var(--fuente-secundaria);
     background-color: var(--marron);
     padding: 0.5rem;
@@ -297,7 +297,7 @@ CARRITO
     cursor:pointer;
 }
 
-.btn-vaciar:hover, .btn-imprimir:hover {
+.btn-vaciar:hover, .btn-imprimir:hover,.btn-cancelar:hover, .btn-confirmar:hover {
     border: 1px solid var(--marron);
 }
 .boton-eliminar:hover , .boton-sumar:hover, .boton-restar:hover, .btn-volver:hover {
@@ -396,53 +396,41 @@ SINOPSIS
 }
 
     /*===============
-ENCUESTA
+MODAL
 ==================*/
-
-.calificacion {
-  --value: 4; /* Initial value, will be updated by JS */
-  --star-size: 30px; /* Adjust star size */
-  --star-color: #ccc; /* Color of empty stars */
-  --star-fill: orange; /* Color of filled stars */
-
-appearance: none;
-  width: calc(var(--star-size) * 5); /* Adjust width based on number of stars */
-height: var(--star-size);
-background: linear-gradient(to right, 
-            var(--star-fill) 0%, 
-            var(--star-fill) calc(var(--value) * 20%), 
-            var(--star-color) calc(var(--value) * 20%), 
-            var(--star-color) 100%);
-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 0 L61.8 38.2 L100 38.2 L69.1 61.8 L80.9 100 L50 76.4 L19.1 100 L30.9 61.8 L0 38.2 L38.2 38.2 Z'/></svg>") 0 / var(--star-size) repeat-x;
-cursor: pointer;
+.modalContainer h2 {
+    color: var(--marron) !important;
 }
 
-#formularioCliente #texto {
-    width: 300px;
-    height: 100px; 
-}
-
-#formularioCliente #calificacion {
-    width: 143px;
-    height: 20px;
-}
-
-#formularioCliente #myfile {
-    width: auto;
-    height: auto;
-}
-
-#formularioCliente #nuevo {
-    width: auto;
-    height: auto; 
-}
-
-.fila-botones {
-    display: flex;
-    gap: 40px;
-}
-
-.btn-salir{
+.modalContainer .modal-content {
     background-color: var(--cremita);
     color: var(--marron);
+    margin: auto;
+    padding: 20px;
+    box-shadow: var(--iluminador);
+    width: 40%;
+    border-radius: 8px;
+    text-align: center;
+}
+
+
+.modalContainer {
+    display: flex;   
+    justify-content: center; 
+    align-items: center;     
+    padding-top: 15%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;      
+    height: 100%; 
+    background: rgba(36, 21, 5, 0.5);
+
+}
+
+    
+.botones-modal {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
 }

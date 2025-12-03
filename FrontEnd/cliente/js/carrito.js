@@ -1,6 +1,8 @@
 import { initTema, imprimirDatosAlumno } from "./tema.js";
+import { verificarLogin } from "./verificar.js";
 imprimirDatosAlumno();
 initTema();
+verificarLogin();
 
 
 // Obtener el nombre del cliente
@@ -66,12 +68,15 @@ function mostrarCarrito(){
 
     const btnImprimir = document.getElementById("btnImprimir");
     if (btnImprimir) {
-        btnImprimir.addEventListener("click", imprimirTicket);
-    }
+        btnImprimir.addEventListener("click", function(){
+        modal.style.display = "block";
+        body.style.overflow = "hidden";
+        })
 
-    const btnVaciar = document.getElementById("btnVaciar");
-    if (btnVaciar) {
-        btnVaciar.addEventListener("click", vaciarCarrito);
+        const btnVaciar = document.getElementById("btnVaciar");
+        if (btnVaciar) {
+            btnVaciar.addEventListener("click", vaciarCarrito);
+        }
     }
 }
 
@@ -130,7 +135,7 @@ function imprimirTicket(){
     doc.setFontSize(16);
 
     // escribimos el texto
-    doc.text("Ticket de compra: ",10 ,y);
+    doc.text("Ticket de compra de "+usuario+":",10 ,y);
 
     
     // incremento 10px
@@ -198,7 +203,7 @@ async function registrarVenta(total, idProductos) {
         alert(result.message)
 }
       */  
-        alert("Ticket impreso!")
+        alert("¡Ticket impreso!")
         //limpieza y redireccion
         localStorage.removeItem(keyCarrito);
         localStorage.removeItem("nombreCliente");
@@ -211,6 +216,30 @@ async function registrarVenta(total, idProductos) {
 }
 
 mostrarCarrito();
+
+    /*===============
+MODAL
+==================*/
+var modal = document.getElementById("ButtonModal");
+var body = document.getElementsByTagName("body")[0];
+
+var btnConfirmar = document.getElementById("btnConfirmarImpresion");
+var btnCancelar = document.getElementById("btnCancelarModal");
+
+btnCancelar.onclick = function() {
+    cerrarModal();
+}
+
+btnConfirmar.onclick = function() {
+    cerrarModal();
+    imprimirTicket();
+}
+
+function cerrarModal() {
+    modal.style.display = "none";
+    body.style.overflow = "visible";
+}
+/*====*/
 
 window.restarProducto = restarProducto;
 window.sumarProducto = sumarProducto;
