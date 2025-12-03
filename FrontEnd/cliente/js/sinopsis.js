@@ -18,7 +18,6 @@ async function cargarLibro() {
     try {
         const response = await fetch(`${url}/api/products/${id}`);
         const data = await response.json();
-    
 
         const libro = data.payload[0];
 
