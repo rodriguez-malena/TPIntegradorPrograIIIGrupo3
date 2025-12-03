@@ -134,7 +134,7 @@ header img {
 
 .menu-horizontal > li {
     border-radius: 8px;
-    position: relative; /* cada li será el punto de referencia para su submenu */
+    position: relative;
 }
 
 li img {
@@ -161,7 +161,7 @@ li img {
     top: 100%;
     left: 50%; 
     padding: 0;
-    transform: translateX(-50%); /* centra horizontalmente */
+    transform: translateX(-50%); 
 }
 
 .menu-horizontal li:hover .menu-vertical{
@@ -518,7 +518,7 @@ MODAL
     justify-content: center;
 }
 
-/* Ajuste extra para pantallas muy chicas */
+
 @media (max-width: 400px) {
     .modalContainer .modal-content {
         padding: 15px;

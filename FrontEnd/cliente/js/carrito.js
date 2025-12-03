@@ -118,29 +118,15 @@ function actualizarContador() {
 function imprimirTicket(){
     console.table(carrito)
 
-    // necesitamos para registrar las ventas guardar ids
-    const idProductos = []; 
+    const idProductos = []; // para registrar las ventas
+    const doc = new window.jspdf.jsPDF();// gracias al CDN extraemos de la clase jspdf del objeto global window
+    
+    let y = 10 // variable para controlar el eje vertical con un margen superior de 10px
 
-    // gracias al CDN extraemos de la clase jspdf del objeto global window
-    const doc = new window.jspdf.jsPDF();
-
-
-    // creamos una nueva instanacia del doc PDF usando la clase jsPDF
-    //const doc = new jsPDF();
-
-    // variable para controlar el eje verticalcocon un margen superior de 10px
-    let y = 10
-
-    // establecemos tamaño de 16px para el primer texto
     doc.setFontSize(16);
-
-    // escribimos el texto
     doc.text("Ticket de compra de "+usuario+":",10 ,y);
 
-    
-    // incremento 10px
-    y += 10
-    
+    y += 10 // incremento 10px
     doc.setFontSize(12)
     
     carrito.forEach(producto => {
@@ -150,26 +136,19 @@ function imprimirTicket(){
         const subtotal = producto.precio * producto.cantidad;
 
         doc.text(`${producto.titulo}  x${producto.cantidad}  = $${subtotal.toLocaleString()}`, 10,  y);
-
-        // incrementamos 7px la posicion vertical para evitar solapamiento
         y += 7;
     });
 
-    //calculamos el total del ticket usando reduce
+    //calculamos el total del ticket
     const total = carrito.reduce((acc, producto) => {
         return acc + producto.precio * producto.cantidad;
     }, 0);
     
-    // añadimos 5px en el eje vertical para separar productos del total
     y +=5;
 
-    // escribimos el total del ticket en el pdf
     doc.text(`Total= $${total.toLocaleString()}`, 10, y)
-
-    //Imprimimos ticket
     doc.save("ticket.pdf");
 
-    // to do: llamada para registrar ventas: fetch con metodo post a /api/sales y luego un endpoint  app.post("/api/sales")
     registrarVenta(total, idProductos);
 
 }    
@@ -186,22 +165,6 @@ async function registrarVenta(total, idProductos) {
         products: idProductos
     }
 
-    // TO DO hacer endpoint /api/sales
-    /* let response = await fetch("http://localhost:3000", {
-        method: "POST",
-        headers: {
-            "Content-Type" : "application/json"
-        },
-        body: JSON.stringify(data)
-    });
-
-    const result = await response.json();
-
-    if (response.ok) {
-        console.log(response);
-        alert(result.message)
-}
-      */  
         alert("¡Ticket impreso!")
         //limpieza y redireccion
         localStorage.removeItem(keyCarrito);
@@ -237,7 +200,7 @@ function cerrarModal() {
     modal.style.display = "none";
     body.style.overflow = "visible";
 }
-/*====*/
+
 
 window.restarProducto = restarProducto;
 window.sumarProducto = sumarProducto;

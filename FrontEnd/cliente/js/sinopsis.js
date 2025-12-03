@@ -6,7 +6,7 @@ initTema();
 const detalleLibro = document.getElementById("detalle-libro");
 
 // Leer el ID desde la URL
-const params = new URLSearchParams(window.location.search);  // es una clase de JavaScript que parsea los parámetros de la URL. Le pasás la cadena "?id=2" y te permite acceder a cada parámetro fácilmente.
+const params = new URLSearchParams(window.location.search);  
 const id = params.get("id"); // devuelve el valor del parámetro "id"
 
 async function cargarLibro() {
