@@ -1,5 +1,5 @@
 import { initTema, imprimirDatosAlumno } from "./tema.js";
-//import { imprimirDatosAlumno } from "./main.js";
+
 initTema();
 imprimirDatosAlumno();
 

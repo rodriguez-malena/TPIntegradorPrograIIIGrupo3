@@ -164,7 +164,7 @@ function imprimirTicket(){
     y +=5;
 
     // escribimos el total del ticket en el pdf
-    doc.text(`Total: $${total}`, 10, y)
+    doc.text(`Total= $${total.toLocaleString()}`, 10, y)
 
     //Imprimimos ticket
     doc.save("ticket.pdf");
@@ -177,7 +177,6 @@ function imprimirTicket(){
 async function registrarVenta(total, idProductos) {
     const fecha = new Date();
 
-    // MYSQL no acepta fechas en formato ISO con milisegundos
     const fechaFormato = fecha.toISOString().slice(0, 19).replace("T", " "); // limpiamos datos para que mysql lo acepte
 
     const data = {
@@ -209,15 +208,14 @@ async function registrarVenta(total, idProductos) {
         localStorage.removeItem("nombreCliente");
         localStorage.removeItem("carrito");
         window.location.href = "inicioCliente.html";
-        //window.location.href = "encuesta.html";
-    //}
+        
 
 
 }
 
 mostrarCarrito();
 
-    /*===============
+/*===============
 MODAL
 ==================*/
 var modal = document.getElementById("ButtonModal");
