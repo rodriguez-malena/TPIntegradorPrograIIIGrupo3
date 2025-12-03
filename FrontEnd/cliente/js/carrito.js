@@ -71,14 +71,14 @@ function mostrarCarrito(){
         btnImprimir.addEventListener("click", function(){
         modal.style.display = "block";
         body.style.overflow = "hidden";
-        })
+        })}
 
         const btnVaciar = document.getElementById("btnVaciar");
         if (btnVaciar) {
             btnVaciar.addEventListener("click", vaciarCarrito);
         }
     }
-}
+
 
 
 function restarProducto(indice) {
