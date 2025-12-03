@@ -2,7 +2,9 @@
 const formularioCliente = document.getElementById('formularioCliente');
 const inputCliente = document.getElementById('cliente');
 
-
+if (localStorage.getItem('nombreCliente')) {
+    localStorage.removeItem('nombreCliente');
+}
 
 formularioCliente.addEventListener('submit', function(evento) {
     evento.preventDefault(); 
@@ -16,7 +18,5 @@ formularioCliente.addEventListener('submit', function(evento) {
     } else {
         alert('Por favor ¡¡¡ingresa tu nombre para continuar!!!');
     }
-
-
+    
 });
-
