@@ -1,5 +1,5 @@
-import { initTema } from "./tema.js";
-import { imprimirDatosAlumno, url } from "./main.js";
+import { initTema, imprimirDatosAlumno } from "./tema.js";
+import { url } from "./main.js";
 
 initTema();
 
@@ -18,6 +18,7 @@ async function cargarLibro() {
     try {
         const response = await fetch(`${url}/api/products/${id}`);
         const data = await response.json();
+    
 
         const libro = data.payload[0];
 
