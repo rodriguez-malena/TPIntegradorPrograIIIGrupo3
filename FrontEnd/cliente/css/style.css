@@ -53,6 +53,19 @@ header {
     box-shadow: var(--shadow);
 }
 
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+}
+
 .registro {
     display: flex;
     flex-direction: column;
@@ -90,6 +103,22 @@ header img {
     border-radius: 8px;
     box-sizing: border-box;
     }
+
+@media (max-width: 768px) {
+    #barraBusqueda {
+        width: 250px;
+        height: 35px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    #barraBusqueda {
+        width: 100%;
+        font-size: 14px;
+        height: 35px;
+    }
+}
 
 
     
@@ -349,6 +378,40 @@ input:focus {
     box-shadow: 0 0 5px var(--marron);
 }
 
+
+@media (max-width: 768px) {
+    form input, #formularioCliente #texto {
+        width: 250px;
+        font-size: 16px;
+        height: 35px;
+    }
+    form button {
+        font-size: 16px;
+    }
+}
+
+/* Celular */
+@media (max-width: 480px) {
+    #formularioCliente {
+        width: 90%;
+        padding: 1rem;
+    }
+
+    form input, #formularioCliente #texto {
+        width: 100%;
+        font-size: 14px;
+        height: 35px;
+    }
+
+    form button {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    h2, p {
+        text-align: center;
+    }
+}
 /*==============
 FOOTER
 ======================*/
@@ -379,7 +442,6 @@ SINOPSIS
 
 .contenedor-sinopsis {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
@@ -400,7 +462,19 @@ SINOPSIS
     text-align: center;
 }
 
-    /*===============
+
+@media (max-width: 768px) {
+    .contenedor-sinopsis {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contenedor-sinopsis img {
+        width: 100px;
+    }
+}
+
+/*===============
 MODAL
 ==================*/
 .modalContainer h2 {
