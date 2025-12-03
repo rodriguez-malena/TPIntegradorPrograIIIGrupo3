@@ -1,3 +1,7 @@
+import { initTema, imprimirDatosAlumno } from "./tema.js";
+//import { imprimirDatosAlumno } from "./main.js";
+initTema();
+imprimirDatosAlumno();
 
 const formularioCliente = document.getElementById('formularioCliente');
 const inputCliente = document.getElementById('cliente');

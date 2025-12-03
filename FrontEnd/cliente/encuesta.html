@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta | Entre Líneas</title>
+    <link rel="icon" type="image/png" href="./img-cliente/libro.png">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="registro">
+            <div class="logo-titulo">
+                <img src="./img-cliente/libro.png" alt="Logo de libro">
+                <h1>Entre líneas</h1>
+            </div>
+        </div>
+    </header>
+
+    
+    <form id="formularioCliente">
+        <br>
+        <h1>Encuesta</h1>
+        <br><br>
+        <label for="calificacion">Calificacion:</label>
+        <input type="range" id="calificacion" class="calificacion" name="calificacion" type="range" 
+        min="0" max="5" step="0.5" value="4" oninput="this.style.setProperty('--value', this.value)">
+        <br><br>
+        <textarea id="comentarios" name="comentarios" placeholder="Comentarios..."></textarea>
+        <br><br>
+        
+        <label for="myfile">Seleccione una imagen:</label>
+        <input type="file" id="myfile" name="myfile"><br><br>
+
+        <input type="email" id="email" name="email" placeholder="Ingrese su correo">
+        <br><br>
+
+        <div class="fila-checkbox">
+            <input type="checkbox" id="nuevo" name="nuevo" value="Si">
+            <label for="nuevo"> Primera vez usando este método de compra</label>
+            <br><br><br>
+        </div>
+        <div class="fila-botones">
+            <button id= "btn-subir" type="submit">Subir</button>
+            <button type="button" onclick="window.location.href='/inicioCliente.html'" class="btn-salir">Omitir</button>
+
+        </div>
+    </form>
+    
+    <footer>
+        <hr>
+        <div class="contenedor-footer">
+            <button id="cambiarTema">
+                <img src="./img-cliente/icono-tema.png" alt="Icono de cambio de tema">
+            </button>
+            <div id="datosAlumno"></div>
+        </div>
+    </footer>
+    
+    <script type="module" src="encuesta.js"></script>
+</body>
+</html>

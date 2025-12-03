@@ -1,5 +1,5 @@
-import { initTema } from "./tema.js";
-import { imprimirDatosAlumno } from "./main.js";
+import { initTema, imprimirDatosAlumno } from "./tema.js";
+imprimirDatosAlumno();
 initTema();
 
 
@@ -204,6 +204,7 @@ async function registrarVenta(total, idProductos) {
         localStorage.removeItem("nombreCliente");
         localStorage.removeItem("carrito");
         window.location.href = "inicioCliente.html";
+        //window.location.href = "encuesta.html";
     //}
 
 

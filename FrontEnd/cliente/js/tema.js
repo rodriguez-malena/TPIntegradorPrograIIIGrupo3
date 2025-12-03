@@ -14,3 +14,17 @@ export function initTema() {
     localStorage.setItem('modo', tema ? 't2' : 't1')
     });
 }
+
+export const alumnos = [
+    {dni:"46642416", nombre:"Malena", apellido:"Rodriguez Barrio"},
+    {dni:"45071872", nombre:"Aisha", apellido:"Pereyra Sole"}
+];
+
+export function imprimirDatosAlumno(){
+    let datosAlumno = document.getElementById("datosAlumno");
+    alumnos.forEach(alumno => {
+        console.log(`Alumno: ${alumno.nombre}, Apellido: ${alumno.apellido}, DNI: ${alumno.dni}`);
+        datosAlumno.innerHTML += `${alumno.nombre} ${alumno.apellido} </br>`;
+    })
+    
+}

@@ -1,10 +1,5 @@
-import { initTema } from "./tema.js";
+import { initTema, imprimirDatosAlumno } from "./tema.js";
 import { verificarLogin } from "./verificar.js";
-
-export const alumnos = [
-    {dni:"46642416", nombre:"Malena", apellido:"Rodriguez Barrio"},
-    {dni:"45071872", nombre:"Aisha", apellido:"Pereyra Sole"}
-];
 
 
 let listadoProductos = document.getElementById("listadoProductos");
@@ -127,14 +122,7 @@ export function eliminarDelCarrito(id){
 window.agregarAlCarrito = agregarAlCarrito;
 window.eliminarProductoCarrito = eliminarDelCarrito;
 
-export function imprimirDatosAlumno(){
-    let datosAlumno = document.getElementById("datosAlumno");
-    alumnos.forEach(alumno => {
-        console.log(`Alumno: ${alumno.nombre}, Apellido: ${alumno.apellido}, DNI: ${alumno.dni}`);
-        datosAlumno.innerHTML += `${alumno.nombre} ${alumno.apellido} </br>`;
-    })
-    
-}
+
 
 function init() {
     imprimirDatosAlumno();
